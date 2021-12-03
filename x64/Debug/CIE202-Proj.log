@@ -1,0 +1,8 @@
+﻿  ActionAddBattery.cpp
+  ActionAddBulb.cpp
+  ActionAddBuzzer.cpp
+  ActionAddFuse.cpp
+  ActionAddGround.cpp
+  ActionAddSwitch.cpp
+  Generating Code...
+  CIE202-Proj.vcxproj -> F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\x64\Debug\CIE202-Proj.exe
