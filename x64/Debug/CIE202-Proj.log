@@ -1,0 +1,5 @@
+﻿  ActionAddConnection.cpp
+  ApplicationManager.cpp
+  Generating Code...
+ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __cdecl ActionAddConnection::ActionAddConnection(class ApplicationManager *)" (??0ActionAddConnection@@QEAA@PEAVApplicationManager@@@Z) referenced in function "public: void __cdecl ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QEAAXW4ActionType@@@Z)
+D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe : fatal error LNK1120: 1 unresolved externals
