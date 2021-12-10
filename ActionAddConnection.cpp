@@ -2,7 +2,7 @@
 
 #include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
 
-ActionAddConnection::ActionAddConnection(ApplicationManager* pApp, Component* comp1, Component* comp2) :Action(pApp)
+ActionAddConnection::ActionAddConnection(ApplicationManager* pApp/*, Component* comp1, Component* comp2*/) :Action(pApp)
 {
 }
 
@@ -43,7 +43,7 @@ void ActionAddConnection::Execute()
 	pGInfo->PointsList[1].y = y2;
 
 	Connection* pC = new Connection(pGInfo, Comp1, Comp2);
-	pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
+	//pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
 }
 
 void ActionAddConnection::Undo()

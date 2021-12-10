@@ -21,7 +21,7 @@ protected:
 
 	int term1_conn_count;	//actual no. of connections to each terminal
 	int term2_conn_count;
-
+	bool Selected;          //Riham  
 
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 
@@ -43,7 +43,13 @@ public:
 
 	
 	Component();	
-	
+	//////////////////////////////////////////////////////
+	bool IFSelected();  //riham
+	void setSelected(bool s);
+	virtual string CompData() = 0;
+	////////////////////////////////////////////////////////
+	GraphicsInfo* getM_pGfxInfo();  //riham
+	////////////////////////////////////////////////////////
 	//Destructor must be virtual
 	virtual ~Component();
 };

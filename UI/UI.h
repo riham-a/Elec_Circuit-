@@ -39,7 +39,13 @@ class UI
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_RES,		//Resistor item in menu
-	
+		ITM_Bulb,
+	    ITM_Switch,
+		ITM_Battery,
+		ITM_Ground,
+		ITM_Buzzer,
+		ITM_Fuse,
+		//ITM_Connection,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -110,6 +116,16 @@ public:
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	void DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+
+
+
+
 
 	///TODO: Make similar functions for drawing all other components, connections, .. etc
 

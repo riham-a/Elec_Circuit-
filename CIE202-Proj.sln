@@ -1,9 +1,39 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CIE202-Proj", "CIE202-Proj.vcxproj", "{CBB4540C-E1F3-4984-82FB-0C3E157C9F0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{560231EE-DFA0-4DC1-B53B-0C3428E1EEE6}"
+	ProjectSection(SolutionItems) = preProject
+		ActionAddBattery.cpp = ActionAddBattery.cpp
+		ActionAddBattery.h = ActionAddBattery.h
+		ActionAddBulb.cpp = ActionAddBulb.cpp
+		ActionAddBulb.h = ActionAddBulb.h
+		ActionAddBuzzer.cpp = ActionAddBuzzer.cpp
+		ActionAddBuzzer.h = ActionAddBuzzer.h
+		ActionAddFuse.cpp = ActionAddFuse.cpp
+		ActionAddFuse.h = ActionAddFuse.h
+		ActionAddGround.cpp = ActionAddGround.cpp
+		ActionAddGround.h = ActionAddGround.h
+		ActionAddSwitch.cpp = ActionAddSwitch.cpp
+		ActionAddSwitch.h = ActionAddSwitch.h
+		Battery.cpp = Battery.cpp
+		Battery.h = Battery.h
+		Bulb.cpp = Bulb.cpp
+		Bulb.h = Bulb.h
+		Buzzer.cpp = Buzzer.cpp
+		Buzzer.h = Buzzer.h
+		Fuse.cpp = Fuse.cpp
+		Fuse.h = Fuse.h
+		Ground.cpp = Ground.cpp
+		Ground.h = Ground.h
+		main.cpp = main.cpp
+		main.h = main.h
+		Switch.cpp = Switch.cpp
+		Switch.h = Switch.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +54,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87BA2E08-89E3-407C-AC49-10E5E13CF5EA}
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,5 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
+
 
 
 ApplicationManager::ApplicationManager()
@@ -18,7 +18,20 @@ void ApplicationManager::AddComponent(Component* pComp)
 	CompList[CompCount++] = pComp;		
 }
 ////////////////////////////////////////////////////////////////////
-
+// //By Riham
+////////////////////////////////////////////////////////////////////
+int ApplicationManager::getCompCount()
+{
+	return CompCount;
+}
+////////////////////////////////////////////////////////////////////
+// //By Riham
+////////////////////////////////////////////////////////////////////
+Component** ApplicationManager::getCompList()
+{
+	return CompList;
+}
+////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is reuired from the user
@@ -34,11 +47,37 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_RESISTOR:
 			pAct= new ActionAddRes(this);
 			break;
+		case ADD_Bulb:
+			pAct = new ActionAddBulb(this);
+			break;
+
+		case ADD_Switch:
+			pAct = new ActionAddSwitch(this);
+			break;
+
+		case ADD_Battery:
+			pAct = new ActionAddBattery(this);
+			break;
+
+		case ADD_Ground:
+			pAct = new ActionAddGround(this);
+			break;
+
+		case ADD_Buzzer:
+			pAct = new ActionAddBuzzer(this);
+			break;
+		case ADD_Fuse:
+			pAct = new ActionAddFuse(this);
+			break;
+
 
 		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
+			pAct = new ActionAddConnection(this);
 			break;
-	
+
+		case SELECT:
+			pAct = new ActionSelect(this);
+			break;
 
 		case EXIT:
 			///TODO: create ExitAction here
@@ -51,6 +90,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
+
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::UpdateInterface()
