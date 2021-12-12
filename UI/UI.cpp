@@ -83,7 +83,6 @@ ActionType UI::GetUserAction() const
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
 	if(AppMode == DESIGN )	//application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -104,6 +103,9 @@ ActionType UI::GetUserAction() const
 			case ITM_Ground: return ADD_Ground;
 			case ITM_Buzzer: return ADD_Buzzer;
 			case ITM_Fuse: return ADD_Fuse;
+			//case ITM_Connection: return ADD_CONNECTION;
+			//case ITM_Select: return SELECT;
+
 
 
 			case ITM_EXIT:	return EXIT;	
@@ -196,7 +198,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Ground] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_Buzzer] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.jpg";
-
+	
 
 
 
@@ -289,6 +291,7 @@ void UI::DrawGround(const GraphicsInfo& b_GfxInfo, bool selected) const
 	pWind->DrawImage(GroundImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+
 void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
 {
 	string BuzzerImage;
@@ -301,6 +304,8 @@ void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
 	pWind->DrawImage(BuzzerImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 //TODO: Add similar functions to draw all other components
+
+
 
 void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 {

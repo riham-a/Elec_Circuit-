@@ -1,10 +1,8 @@
 #pragma once
+#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Actions\Action.h"
+#include "Battery.h"
+#include "ApplicationManager.h"
 
-
-
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Actions\Action.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Battery.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ApplicationManager.h"
 
 class ActionAddBattery : public Action
 {

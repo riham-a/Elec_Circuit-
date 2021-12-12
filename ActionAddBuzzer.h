@@ -1,9 +1,7 @@
 #pragma once
-
-
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Actions\Action.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Buzzer.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ApplicationManager.h"
+#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Actions\Action.h"
+#include "Buzzer.h"
+#include "ApplicationManager.h"
 
 class ActionAddBuzzer : public Action
 {

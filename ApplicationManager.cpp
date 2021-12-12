@@ -1,11 +1,4 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBattery.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddGround.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBuzzer.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddFuse.h"
 
 
 
@@ -25,7 +18,20 @@ void ApplicationManager::AddComponent(Component* pComp)
 	CompList[CompCount++] = pComp;		
 }
 ////////////////////////////////////////////////////////////////////
-
+// //By Riham
+////////////////////////////////////////////////////////////////////
+int ApplicationManager::getCompCount()
+{
+	return CompCount;
+}
+////////////////////////////////////////////////////////////////////
+// //By Riham
+////////////////////////////////////////////////////////////////////
+Component** ApplicationManager::getCompList()
+{
+	return CompList;
+}
+////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is reuired from the user
@@ -66,10 +72,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 
 		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
+			pAct = new ActionAddConnection(this);
 			break;
 
-
+		case SELECT:
+			pAct = new ActionSelect(this);
+			break;
 
 		case EXIT:
 			///TODO: create ExitAction here
@@ -82,6 +90,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
+
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::UpdateInterface()

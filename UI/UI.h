@@ -45,6 +45,7 @@ class UI
 		ITM_Ground,
 		ITM_Buzzer,
 		ITM_Fuse,
+		//ITM_Connection,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
