@@ -110,6 +110,7 @@ ActionType UI::GetUserAction() const
 			case ITM_TO_SIM: return SIM_MODE;
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
+			case ITM_Connection: return ADD_CONNECTION;
 			case ITM_EXIT:	return EXIT;	
 			
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
@@ -204,6 +205,8 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_TO_SIM] = "images\\Menu\\simulation.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\Menu\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Load.jpg";
+	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
+	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -377,9 +380,19 @@ void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 
 void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
-	//TODO: Add code to draw connection
-}
+	//string FuseImage;
+	if (selected)
+		pWind->SetPen(BLACK, 3);
+	else
+		pWind->SetPen(RED, 3);
 
+		//Draw Resistor at Gfx_Info (1st corner)
+		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
+}
+window* UI::getpWind()
+{
+	return pWind;
+}
 
 UI::~UI()
 {
