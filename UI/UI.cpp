@@ -103,8 +103,7 @@ ActionType UI::GetUserAction() const
 			case ITM_Ground: return ADD_Ground;
 			case ITM_Buzzer: return ADD_Buzzer;
 			case ITM_Fuse: return ADD_Fuse;
-			//case ITM_Connection: return ADD_CONNECTION;
-			//case ITM_Select: return SELECT;
+			case ITM_Connection: return ADD_CONNECTION;
 
 
 
@@ -198,6 +197,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Ground] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_Buzzer] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
+	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
 
 
 
@@ -322,9 +322,19 @@ void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 
 void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
-	//TODO: Add code to draw connection
-}
+	//string FuseImage;
+	if (selected)
+		pWind->SetPen(BLACK, 3);
+	else
+		pWind->SetPen(RED, 3);
 
+		//Draw Resistor at Gfx_Info (1st corner)
+		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
+}
+window* UI::getpWind()
+{
+	return pWind;
+}
 
 UI::~UI()
 {
