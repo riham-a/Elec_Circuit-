@@ -1,6 +1,5 @@
 #pragma once
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Component.h"
-
+#include "Components/Component.h"
 class Bulb :public Component
 {
 public:
@@ -9,4 +8,6 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 
 	virtual string CompData();
+	virtual void Save(fstream file);
+
 };

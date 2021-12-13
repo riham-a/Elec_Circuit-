@@ -24,6 +24,13 @@ void ActionAddSwitch::Execute()
 	//Clear Status Bar
 	pUI->ClearStatusBar();
 
+	pUI->PrintMsg("Enter the name of Switch");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter a 1 for on or 0 for off: ");
+	string On_Off = pUI->GetSrting();
+	int value = stoi(On_Off);
+	pUI->ClearStatusBar();
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 

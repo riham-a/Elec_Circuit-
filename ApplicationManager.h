@@ -34,6 +34,8 @@ private:
 	int CompCount;		//Actual number of Components
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
 
+	int ConnCount; 
+	Connection* Connlist[MaxCompCount - 1];
 	UI* pUI; //pointer to the UI
 
 
@@ -60,6 +62,13 @@ public:
 	void AddComponent(Component* pComp);
 	// get compnent list
 	Component** getCompList();
+
+	int getCompCount();
+
+	Component* Findcomp(int x , int y);
+	Connection* Findconnection(int x, int y);
+	void savef(fstream *file);
+
 	//destructor
 	~ApplicationManager();
 };
