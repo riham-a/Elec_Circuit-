@@ -39,7 +39,16 @@ class UI
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_RES,		//Resistor item in menu
-	
+		ITM_Bulb,
+		ITM_Switch,
+		ITM_Battery,
+		ITM_Ground,
+		ITM_Buzzer,
+		ITM_Fuse,
+		ITM_EDIT,
+		ITM_TO_SIM,
+		ITM_SAVE,
+		ITM_LOAD,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -52,7 +61,6 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
-	
 		//TODO:Add more items names here
 	
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
@@ -95,7 +103,6 @@ public:
 	string GetSrting();		//Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
-
 	
 	// Output Functions  ---------------------------
 	void ChangeTitle(string Title) const;
@@ -103,13 +110,22 @@ public:
 	void CreateDesignToolBar();	//Tool bar of the design mode
 	void CreateSimulationToolBar();//Tool bar of the simulation mode
 	void CreateStatusBar() const;	//Create Status bar
-
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
 
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	void DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+
+
+
+
 
 	///TODO: Make similar functions for drawing all other components, connections, .. etc
 
