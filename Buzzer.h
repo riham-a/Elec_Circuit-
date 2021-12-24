@@ -9,4 +9,6 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual string CompData();
 
+	virtual void Save(fstream file);
+
 };

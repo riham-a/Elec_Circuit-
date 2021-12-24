@@ -1,7 +1,7 @@
 #pragma once
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Actions\Action.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Switch.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
+#include "Actions\Action.h"
+#include "Switch.h"
+#include "ApplicationManager.h"
 
 class ActionAddSwitch : public Action
 {

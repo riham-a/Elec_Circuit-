@@ -39,6 +39,15 @@ void ActionAddBattery::Execute()
 
 	Battery* pBat = new Battery(pGInfo);
 	pManager->AddComponent(pBat);
+
+	pUI->PrintMsg("Enter the name of Battery : ");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter a value : ");
+	string v_label = pUI->GetSrting();
+	int value = stoi(v_label);
+	pUI->ClearStatusBar();
+
 }
 
 void ActionAddBattery::Undo()
