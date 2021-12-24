@@ -46,6 +46,8 @@ void ActionAddRes::Execute()
 	pGInfo->PointsList[1].y = Cy + compHeight/2;
 	 
 	Resistor* pR = new Resistor(pGInfo);
+	pR->setCompName(m_label);
+	pR->setCompValue(value);
 	pManager->AddComponent(pR);
 }
 

@@ -49,6 +49,7 @@ class UI
 		ITM_TO_SIM,
 		ITM_SAVE,
 		ITM_LOAD,
+		ITM_Connection,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -116,13 +117,13 @@ public:
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
-	void DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+	void DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off,  bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected = false) const;
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-
+	window* getPWind();
 
 
 

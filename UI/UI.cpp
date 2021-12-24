@@ -247,28 +247,74 @@ void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected) const
+void UI::DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off, bool selected) const
 {
 	string BulbImage;
-	if (selected)
-		BulbImage = "Images\\Comp\\Bulb_HI.jpg";	//use image of highlighted Bulb
+	if (on_off == 1)
+	{
+		if (selected)
+		{
+			BulbImage = "Images\\Comp\\BulbON_HI.jpg";	//use image of highlighted Bulb
+			pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+		else
+		{
+			BulbImage = "Images\\Comp\\BulbON.jpg";	//use image of the normal Bulb
+			pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+	}
+	else if (on_off == 0)
+	{
+		if (selected)
+		{
+			BulbImage = "Images\\Comp\\BulbOFF_HI.jpg";	//use image of highlighted Bulb
+			pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+		else
+		{
+			BulbImage = "Images\\Comp\\BulbOFF.jpg";	//use image of the normal Bulb
+			pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+	}
 	else
-		BulbImage = "Images\\Comp\\Bulb.jpg";	//use image of the normal Bulb
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	{
+		PrintMsg( "Please, Enter only 1, or 0" );
+	}
 }
 
-void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected) const
+void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected) const
 {
 	string SwitchImage;
-	if (selected)
-		SwitchImage = "Images\\Comp\\Switch_HI.jpg";	//use image of highlighted Switch
+	if (on_off == 1)
+	{
+		if (selected)
+		{
+			SwitchImage = "Images\\Comp\\SwitchOFF_HI.jpg";	//use image of highlighted Switch
+			pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+		else
+		{
+			SwitchImage = "Images\\Comp\\SwitchOFF.jpg";	//use image of the normal Switch
+			pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+	}
+	else if (on_off == 0)
+	{
+		if (selected)
+		{
+			SwitchImage = "Images\\Comp\\SwitchON_HI.jpg";	//use image of highlighted Switch
+			pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+		else
+		{
+			SwitchImage = "Images\\Comp\\SwitchON.jpg";	//use image of the normal Switch
+			pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		}
+	}
 	else
-		SwitchImage = "Images\\Comp\\Switch.jpg";	//use image of the normal Switch
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	{
+		PrintMsg(" Please Enter only 0 or 1");
+	}
 }
 
 void UI::DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected) const
@@ -295,7 +341,6 @@ void UI::DrawGround(const GraphicsInfo& b_GfxInfo, bool selected) const
 	pWind->DrawImage(GroundImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-
 void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
 {
 	string BuzzerImage;
@@ -307,60 +352,8 @@ void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(BuzzerImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-//TODO: Add similar functions to draw all other components
 
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
 
-void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected) const
-{
-	string SwitchImage;
-	if (selected)
-		SwitchImage = "Images\\Comp\\Switch_HI.jpg";	//use image of highlighted Switch
-	else
-		SwitchImage = "Images\\Comp\\Switch.jpg";	//use image of the normal Switch
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-void UI::DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected) const
-{
-	string BatteryImage;
-	if (selected)
-		BatteryImage = "Images\\Comp\\Battery_HI.jpg";	
-	else
-		BatteryImage = "Images\\Comp\\Battery.jpg";	
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(BatteryImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-void UI::DrawGround(const GraphicsInfo& b_GfxInfo, bool selected) const
-{
-	string GroundImage;
-	if (selected)
-		GroundImage = "Images\\Comp\\Ground_HI.jpg";
-	else
-		GroundImage = "Images\\Comp\\Ground.jpg";
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(GroundImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
-{
-	string BuzzerImage;
-	if (selected)
-		BuzzerImage = "Images\\Comp\\Buzzer_HI.jpg";
-	else
-		BuzzerImage = "Images\\Comp\\Buzzer.jpg";
-
-	//Draw Resistor at Gfx_Info (1st corner)
-	pWind->DrawImage(BuzzerImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-//TODO: Add similar functions to draw all other components
 
 void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 {
@@ -382,14 +375,14 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	//string FuseImage;
 	if (selected)
-		pWind->SetPen(BLACK, 3);
-	else
 		pWind->SetPen(RED, 3);
+	else
+		pWind->SetPen(BLUE, 3);
 
 		//Draw Resistor at Gfx_Info (1st corner)
 		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
 }
-window* UI::getpWind()
+window* UI::getPWind()
 {
 	return pWind;
 }

@@ -30,6 +30,10 @@ void ActionAddBulb::Execute()
 	string v_label = pUI->GetSrting();
 	int value = stoi(v_label);
 	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter 0 for OFF, or 1 for ON: ");
+	string ON_OFF = pUI->GetSrting();
+	int ON_OF = stoi(ON_OFF);
+	pUI->ClearStatusBar();
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
@@ -42,7 +46,7 @@ void ActionAddBulb::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Bulb* pB = new Bulb(pGInfo);
+	Bulb* pB = new Bulb(pGInfo, ON_OF);
 	pManager->AddComponent(pB);
 }
 

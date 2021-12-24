@@ -43,7 +43,7 @@ void ActionAddSwitch::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Switch* pS = new Switch(pGInfo);
+	Switch* pS = new Switch(pGInfo, value);
 	pManager->AddComponent(pS);
 }
 

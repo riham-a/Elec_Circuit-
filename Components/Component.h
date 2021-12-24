@@ -2,10 +2,10 @@
 #define _COMPONENT_H
 
 #include "..\Defs.h"
-#include "..\UI/UI.h"
-#include "Connection.h"
+#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\UI\UI.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
 
-
+class Connection;
 //Base class for all components (resistor, capacitor,....etc) .
 class Component
 {
@@ -18,14 +18,13 @@ protected:
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool selected;
 	//Each terminal is connected to set of connections
-	//Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
-	//Connection *term2_connections[MAX_CONNS];
+	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
+	Connection *term2_connections[MAX_CONNS];
 	int term1_conn_count;	//actual no. of connections to each terminal
 	int term2_conn_count;
 	bool Selected;          //Riham  
 	static int SID;
 	int ID;
-
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 
 public:
@@ -51,9 +50,9 @@ public:
 	virtual string CompData() = 0;
 	////////////////////////////////////////////////////////
 	GraphicsInfo* getM_pGfxInfo();  //riham
+	bool AddtoConnectionsTerm1(Connection* pC);
+	bool AddtoConnectionsTerm2(Connection* pC);
 	////////////////////////////////////////////////////////
-
-	void setSelected(bool);
 	void setCompName(string s);
 	virtual void setCompValue(double n); // virtual as when it come to be inherited, each component has a different value in different units like ohm for resistance and voltage for potential 
 	string GetName();
@@ -64,5 +63,7 @@ public:
 	virtual void Load();
 	//Destructor must be virtual
 	virtual ~Component();
+	bool returnTerr1(Point* P);
+	bool returnTerr2(Point* P);
 };
 #endif

@@ -1,22 +1,4 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
-#include "ActionAddBattery.h"
-#include "ActionAddSwitch.h"
-#include "ActionAddBattery.h"
-#include "ActionAddGround.h"
-#include "ActionAddBuzzer.h"
-#include "ActionAddFuse.h"
-#include "ActionAddBulb.h"
-#include "Actions/ActionSelect.h"
-#include "../Elec Circuit Code Framework/ActionEdit.h"
-#include <math.h>
-#include "Actions/ActionAddConnection.h"
-#include "ActionLoad.h"
-#include "ActionSave.h"
-
-
-
-
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -34,6 +16,7 @@ int ApplicationManager::getCompCount()
 }
 Component* ApplicationManager::Findcomp(int x, int y)
 {
+	int c = 0;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Component* C = CompList[i];
@@ -45,11 +28,16 @@ Component* ApplicationManager::Findcomp(int x, int y)
 		{
 			return C;
 		}
+		else
+			c++;
 	}
+	if (c == CompCount)
+		return NULL;
 }
 
 Connection* ApplicationManager::Findconnection(int x, int y)
 {
+	int C = 0;
 	for (int i = 0; i < ConnCount; i++)
 	{
 		Connection* C = Connlist[i];
@@ -65,9 +53,14 @@ Connection* ApplicationManager::Findconnection(int x, int y)
 		slope = (y2 - y1) / (x2 - x1);
 		b = abs( Y2 - (slope * X2));
 		if ((y / x) == slope && (b = abs(x - (slope * x))))
+		//if(((X1 == x)||(X2 == x))&& ((Y1 == y)||(Y2 == y) ))
 		{
 			return C;
 		}
+	}
+	if (C == ConnCount)
+	{
+		return NULL;
 	}
 }
 
@@ -96,6 +89,7 @@ void ApplicationManager::savef(fstream *file)
 	return CompList;
 }
 
+
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
@@ -103,6 +97,15 @@ void ApplicationManager::AddComponent(Component* pComp)
 }
 ////////////////////////////////////////////////////////////////////
 // //By Riham
+ void ApplicationManager::AddConnection(Connection* pCon, Component* Comp1, Component* Comp2)
+{
+	/*if(! Comp1->AddtoConnectionsTerm1(pCon))
+		pUI->PrintMsg("The first component execeeds its max of connections");
+	 if (!Comp2->AddtoConnectionsTerm2(pCon))
+		 pUI->PrintMsg("The second component execeeds its max of connections");*/
+	 //pUI->DrawConnection(*pCon->getC_pGfxInfo());
+	 Connlist[ConnCount++] = pCon;
+}
 ////////////////////////////////////////////////////////////////////
 int ApplicationManager::getCompCount()
 {
@@ -158,9 +161,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case EDIT_Label:
 			pAct = new ActionEdit(this);
 			break;
-		case ADD_CONNECTION:
-			pAct = new ActionAddConnection(this);
-			break;
 		case SAVE: 
 			pAct = new ActionSave(this);
 			break;
@@ -187,6 +187,8 @@ void ApplicationManager::UpdateInterface()
 {
 		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
+		for (int i = 0; i < ConnCount; i++)
+			Connlist[i]->Draw(pUI);
 
 }
 

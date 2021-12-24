@@ -1,6 +1,6 @@
 #pragma once
 #include "Actions/Action.h"
-#include "ApplicationManager.h"
+#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
 #include <fstream>
 class ActionLoad : public Action
 {

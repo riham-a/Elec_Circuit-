@@ -69,7 +69,51 @@ int Component::GetID()
 void Component::Load()
 {
 }
-
+///////////////////////////////////////////////////Riham
+bool Component::AddtoConnectionsTerm1(Connection* pC)
+{
+	if (term1_conn_count == MAX_CONNS)
+		return false;
+	else
+		term1_conn_count++;
+		term1_connections[term1_conn_count] = pC;
+		return true;
+}
+////////////////////////////////////////////
+bool Component::AddtoConnectionsTerm2(Connection* pC)
+{
+	if (term2_conn_count == MAX_CONNS)
+		return false;
+	else
+	{
+		term2_connections[term1_conn_count++] = pC;
+		return true;
+	}
+}
+bool Component::returnTerr1(Point* P)
+{
+	if (this)
+	{
+		if ((P->x >= m_pGfxInfo->PointsList[0].x) && (P->x <= m_pGfxInfo->PointsList[1].x))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+}
+bool Component::returnTerr2(Point* P)
+{
+	if (this)
+	{
+		if ((P->x > this->m_pGfxInfo->PointsList[0].x) && (P->x < this->m_pGfxInfo->PointsList[1].x))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+}
 Component::~Component()
 {}
 
