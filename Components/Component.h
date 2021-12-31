@@ -2,7 +2,8 @@
 #define _COMPONENT_H
 
 #include "..\Defs.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\UI\UI.h"
+
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\UI\UI.h"
 //#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
 
 class Connection;
@@ -65,5 +66,8 @@ public:
 	virtual ~Component();
 	bool returnTerr1(Point* P);
 	bool returnTerr2(Point* P);
+	int gettermn1();
+	int gettermn2();
+
 };
 #endif

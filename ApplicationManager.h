@@ -5,19 +5,33 @@
 #include "UI\UI.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+//
+//#include "Actions\ActionAddRes.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBulb.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddSwitch.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBattery.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddGround.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBuzzer.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddFuse.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddConnection.h"
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSelect.h"
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionEdit.h"
+////#include <math.h>
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionLoad.h"
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSave.h"
 #include "Actions\ActionAddRes.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBulb.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddSwitch.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBattery.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddGround.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBuzzer.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddFuse.h"
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddConnection.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSelect.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionEdit.h"
-//#include <math.h>
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionLoad.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSave.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBattery.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddGround.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBuzzer.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddFuse.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddConnection.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSelect.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionEdit.h"
+#include <math.h>
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionLoad.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSave.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -54,6 +68,7 @@ public:
 	int getCompCount();  //Riham
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
+
 	void AddConnection(Connection* pCon, Component* Comp1, Component* Comp2);
 	// get compnent list
 	Component** getCompList();

@@ -9,11 +9,6 @@ ApplicationManager::ApplicationManager()
 	//Creates the UI Object & Initialize the UI
 	pUI = new UI;
 }
-
-int ApplicationManager::getCompCount()
-{
-	return CompCount;
-}
 Component* ApplicationManager::Findcomp(int x, int y)
 {
 	int c = 0;
@@ -84,11 +79,6 @@ void ApplicationManager::savef(fstream *file)
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
-	Component** ApplicationManager::getCompList()
-{
-	return CompList;
-}
-
 
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)

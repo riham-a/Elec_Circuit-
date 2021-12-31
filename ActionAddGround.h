@@ -1,6 +1,10 @@
 #pragma once
+
 #include "Actions\Action.h"
-#include "Ground.h"
+
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Ground.h"
+#include "Components\Component.h"
+
 #include "ApplicationManager.h"
 class ActionAddGround : public Action
 {

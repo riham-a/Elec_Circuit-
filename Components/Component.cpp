@@ -17,6 +17,7 @@ Component::Component()
 
 }
 
+
 bool Component::IFSelected()
 {
 	return Selected;
@@ -114,6 +115,18 @@ bool Component::returnTerr2(Point* P)
 	else
 		return false;
 }
+
+int Component::gettermn1()
+{
+	return term1_conn_count;
+}
+
+int Component::gettermn2()
+{
+	return term2_conn_count;
+}
+
+
 Component::~Component()
 {}
 

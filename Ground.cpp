@@ -27,3 +27,15 @@ void Ground::Save(fstream file)
 	file << "GRD" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) <<endl;
 
 }
+
+int Ground::getGcount()
+{
+	return Groundcount;
+}
+
+void Ground::setGcount(int s)
+{
+	Groundcount = s;
+
+}
+
