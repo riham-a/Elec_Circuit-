@@ -1,4 +1,5 @@
 #pragma once
+<<<<<<< Updated upstream
 
 
 
@@ -6,6 +7,14 @@
 #include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Ground.h"
 #include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ApplicationManager.h"
 
+=======
+#include "Actions\Action.h"
+
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Ground.h"
+#include "Components\Component.h"
+
+#include "ApplicationManager.h"
+>>>>>>> Stashed changes
 class ActionAddGround : public Action
 {
 private:

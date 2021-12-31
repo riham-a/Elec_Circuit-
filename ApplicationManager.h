@@ -5,7 +5,23 @@
 #include "UI\UI.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+<<<<<<< Updated upstream
 
+=======
+#include "Actions\ActionAddRes.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBattery.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddGround.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBuzzer.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddFuse.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddConnection.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSelect.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionEdit.h"
+#include <math.h>
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionLoad.h"
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSave.h"
+>>>>>>> Stashed changes
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -39,6 +55,15 @@ public:
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
+<<<<<<< Updated upstream
+=======
+	void AddConnection(Connection* pCon, Component* Comp1, Component* Comp2);
+	// get compnent list
+	Component** getCompList();
+	Component* Findcomp(int x , int y);
+	Connection* Findconnection(int x, int y);
+	void savef(fstream *file);
+>>>>>>> Stashed changes
 
 	//destructor
 	~ApplicationManager();

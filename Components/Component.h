@@ -2,9 +2,14 @@
 #define _COMPONENT_H
 
 #include "..\Defs.h"
+<<<<<<< Updated upstream
 #include "..\UI\UI.h"
 #include "Connection.h"
 
+=======
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\UI\UI.h"
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
+>>>>>>> Stashed changes
 
 //Base class for all components (resistor, capacitor,....etc) .
 class Component
@@ -46,6 +51,13 @@ public:
 	
 	//Destructor must be virtual
 	virtual ~Component();
+<<<<<<< Updated upstream
+=======
+	bool returnTerr1(Point* P);
+	bool returnTerr2(Point* P);
+	int gettermn1();
+	int gettermn2();
+>>>>>>> Stashed changes
 };
 
 #endif
