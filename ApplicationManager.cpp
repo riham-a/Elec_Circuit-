@@ -151,16 +151,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case EDIT_Label:
 			pAct = new ActionEdit(this);
 			break;
-		/*case ADD_CONNECTION:
-			pAct = new ActionAddConnection(this);
-			break;*/
 		case SAVE: 
 			pAct = new ActionSave(this);
 			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
-			break;
-			//TODO: Create AddConection Action here
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
@@ -178,6 +173,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+	Bulb_to_Switch();
 		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
 		for (int i = 0; i < ConnCount; i++)
@@ -190,7 +186,30 @@ UI* ApplicationManager::GetUI()
 {
 	return pUI;
 }
-
+///////////////////////////////Riham////////////////////////////////////////
+void ApplicationManager::Bulb_to_Switch()
+{
+	GraphicsInfo* gf = new GraphicsInfo(2);
+	Component* C;
+	Switch* sw = NULL;
+	Bulb* b = NULL;
+	for (int i = 0; i < CompCount; i++)
+	{
+		C = CompList[i];
+		
+		if (C->CompData() == "Bulb")
+			b = dynamic_cast <Bulb*> (C);
+		if (C->CompData() == "Switch")
+			sw = dynamic_cast <Switch*> (C);
+	}
+	if (sw && b)
+	{
+		if (sw->getON_OFF())
+			b->setON_OFF(true);
+		else
+			b->setON_OFF(false);
+	}
+}
 ////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()
