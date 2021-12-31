@@ -11,7 +11,14 @@ public:
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual string CompData();
-
+	int getON_OFF()
+	{
+		return on_off;
+	}
+	void setON_OFF(int o_F)
+	{
+		on_off = o_F;
+	}
 	virtual void Save(fstream file);
 
 };

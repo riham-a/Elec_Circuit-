@@ -61,7 +61,7 @@ public:
 	Component* Findcomp(int x , int y);
 	Connection* Findconnection(int x, int y);
 	void savef(fstream *file);
-
+	void Bulb_to_Switch(); // feature 36: All bulbs in the circuit should be switched on / off according to switches states.
 	//destructor
 	~ApplicationManager();
 };
