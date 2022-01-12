@@ -1,22 +1,8 @@
-﻿  ActionAddBattery.cpp
-  ActionAddBulb.cpp
-  ActionAddBuzzer.cpp
-  ActionAddFuse.cpp
-  ActionAddGround.cpp
-  ActionAddSwitch.cpp
-O:\UNI\Year 3\Elec Circuit Code Framework\ActionAddSwitch.cpp(45,34): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  ActionCopy.cpp
-  ActionCut.cpp
-  ActionEdit.cpp
-  ActionLoad.cpp
-  ActionPaste.cpp
-  ActionSave.cpp
-  ActionAddConnection.cpp
-  ActionAddRes.cpp
-  ActionSelect.cpp
-  ApplicationManager.cpp
-  main.cpp
+﻿  Component.cpp
+O:\UNI\Year 3\Elec Circuit Code Framework\Components\Component.cpp(122,31): warning C4150: deletion of pointer to incomplete type 'Connection'; no destructor called
+O:\UNI\Year 3\Elec Circuit Code Framework\Components\Component.h(8): message : see declaration of 'Connection'
+O:\UNI\Year 3\Elec Circuit Code Framework\Components\Component.cpp(127,31): warning C4150: deletion of pointer to incomplete type 'Connection'; no destructor called
+O:\UNI\Year 3\Elec Circuit Code Framework\Components\Component.h(8): message : see declaration of 'Connection'
+  Connection.cpp
   Generating Code...
-O:\UNI\Year 3\Elec Circuit Code Framework\ApplicationManager.cpp(67): warning C4715: 'ApplicationManager::Findconnection': not all control paths return a value
-O:\UNI\Year 3\Elec Circuit Code Framework\ApplicationManager.cpp(36): warning C4715: 'ApplicationManager::Findcomp': not all control paths return a value
   CIE202-Proj.vcxproj -> O:\UNI\Year 3\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
