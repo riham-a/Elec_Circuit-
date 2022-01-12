@@ -114,6 +114,25 @@ bool Component::returnTerr2(Point* P)
 	else
 		return false;
 }
+#include <iostream>
+using namespace std;
+void  Component::deleteComp_Conns()
+{
+	cout << "Entered deleteComp_Conns" << endl;
+	for (int i = 0; i < term1_conn_count; i++)
+	{
+		cout << "Enterd loop in deleteComp_Conns" << endl;
+		if(term1_connections[i])
+		delete term1_connections[i];
+		cout << "Deleted the connection" << endl;
+	}
+	for (int i = 0; i < term2_conn_count; i++)
+	{
+		if(term2_connections[i])
+		delete term2_connections[i];
+	}
+
+}
 Component::~Component()
 {}
 

@@ -157,6 +157,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
+		case Delete:
+			pAct = new ActionDelete(this);
+			break;
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -174,13 +177,42 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::UpdateInterface()
 {
 	Bulb_to_Switch();
-		for(int i=0; i<CompCount; i++)
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i])
 			CompList[i]->Draw(pUI);
-		for (int i = 0; i < ConnCount; i++)
+	}
+	for (int i = 0; i < ConnCount; i++)
+	{
+		if (Connlist[i])
 			Connlist[i]->Draw(pUI);
-
+	}
 }
-
+Component* ApplicationManager::GetSelected(int& index)
+{
+	Component* SelectedCom = NULL;
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IFSelected())
+		{
+			SelectedCom = CompList[i];
+			index = i;
+		}
+	}
+	return SelectedCom;
+}
+void ApplicationManager::deleteComp(int index)
+{
+	//Component* newComplist[MaxCompCount];
+	for (int i = index; i < CompCount; i++)
+	{
+		if(i != CompCount-1)
+		CompList[i] = CompList[i + 1];
+	}
+	CompCount--;
+	pUI->ClearDrawingArea();
+	UpdateInterface();
+}
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()
 {

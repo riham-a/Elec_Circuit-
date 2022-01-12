@@ -18,6 +18,7 @@
 //#include <math.h>
 #include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionLoad.h"
 #include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSave.h"
+#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionDelete.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -62,6 +63,8 @@ public:
 	Connection* Findconnection(int x, int y);
 	void savef(fstream *file);
 	void Bulb_to_Switch(); // feature 36: All bulbs in the circuit should be switched on / off according to switches states.
+	void deleteComp(int index);
+	Component* GetSelected(int& index);
 	//destructor
 	~ApplicationManager();
 };

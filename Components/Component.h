@@ -26,7 +26,6 @@ protected:
 	static int SID;
 	int ID;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
-
 public:
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
@@ -52,6 +51,7 @@ public:
 	GraphicsInfo* getM_pGfxInfo();  //riham
 	bool AddtoConnectionsTerm1(Connection* pC);
 	bool AddtoConnectionsTerm2(Connection* pC);
+	void deleteComp_Conns ();
 	////////////////////////////////////////////////////////
 	void setCompName(string s);
 	virtual void setCompValue(double n); // virtual as when it come to be inherited, each component has a different value in different units like ohm for resistance and voltage for potential 

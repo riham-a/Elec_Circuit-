@@ -14,7 +14,7 @@ enum ActionType
 	ADD_Buzzer,
 	ADD_Fuse,
 	ADD_CONNECTION,		//Add Wire Connection
-
+	Delete,
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
 
@@ -32,7 +32,7 @@ enum ActionType
 
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
-
+	voltmeter,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,		//A click on the status bar
