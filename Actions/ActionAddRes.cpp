@@ -24,6 +24,15 @@ void ActionAddRes::Execute()
 	//Clear Status Bar
 	pUI->ClearStatusBar();	
 	
+
+	pUI->PrintMsg("Enter the name of resistor");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter the value of resistor");
+	string v_label = pUI->GetSrting();
+	int value = stoi(v_label);
+	pUI->ClearStatusBar();
+
 	
 	GraphicsInfo * pGInfo= new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 	
@@ -37,6 +46,8 @@ void ActionAddRes::Execute()
 	pGInfo->PointsList[1].y = Cy + compHeight/2;
 	 
 	Resistor* pR = new Resistor(pGInfo);
+	pR->setCompName(m_label);
+	pR->setCompValue(value);
 	pManager->AddComponent(pR);
 }
 

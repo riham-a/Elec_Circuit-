@@ -1,20 +1,20 @@
 #include "Ground.h"
+#include <fstream>
 
+int Ground::Groundcount=0;
 Ground::Ground(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 
 void Ground::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->DrawGround(*m_pGfxInfo); //update to draw resistor
+	pUI->DrawGround(*m_pGfxInfo, Selected); //update to draw resistor
 
 }
 
 void Ground::Operate()
 {
 
-<<<<<<< Updated upstream
-=======
 }
 string Ground::CompData()
 {
@@ -28,13 +28,3 @@ void Ground::Save(fstream file)
 
 }
 
-int Ground::getGcount()
-{
-	return Groundcount;
-}
-
-void Ground::setGcount(int s)
-{
-	Groundcount = s;
->>>>>>> Stashed changes
-}

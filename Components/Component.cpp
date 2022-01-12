@@ -1,9 +1,13 @@
 #include "Component.h"
+#include <fstream>
 
 Component::Component(GraphicsInfo *r_GfxInfo)
 {
 	m_pGfxInfo = r_GfxInfo;	
+	ID = SID++;
 }
+
+int Component::SID = 1;
 
 Component::Component()
 {
@@ -13,8 +17,6 @@ Component::Component()
 
 }
 
-<<<<<<< Updated upstream
-=======
 bool Component::IFSelected()
 {
 	return Selected;
@@ -123,7 +125,7 @@ int Component::gettermn2()
 	return term2_conn_count;
 }
 
->>>>>>> Stashed changes
 Component::~Component()
 {}
+
 

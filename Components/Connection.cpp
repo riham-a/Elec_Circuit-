@@ -1,23 +1,16 @@
-<<<<<<< Updated upstream
-#include "Connection.h"
-=======
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Component.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Connection.h"
 #include <fstream>
->>>>>>> Stashed changes
 
 Connection::Connection(GraphicsInfo *r_GfxInfo, Component *cmp1, Component *cmp2)
 {
 	pGfxInfo = r_GfxInfo;
 	Cmpnt1 = cmp1;
 	Cmpnt2 = cmp2;
+	Selected = false;
 }
 void Connection::Draw(UI* pUI)
 {
-<<<<<<< Updated upstream
-	pUI->DrawConnection(*pGfxInfo);
-}
-=======
 	pUI->DrawConnection(*pGfxInfo, Selected);
 }
 
@@ -56,6 +49,5 @@ void  Connection::setSelected(bool sel)
 }
 
 
->>>>>>> Stashed changes
 
 

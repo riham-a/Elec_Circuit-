@@ -15,7 +15,7 @@ void ActionAddGround::Execute()
 	   UI* pUI = pManager->GetUI();
 	   GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 	   Ground* pG = new Ground(pGInfo);
-	   if ( pG->getGcount() < 1)
+	   if ( pG->Groundcount < 1)
 	   {
 	   //Print Action Message
 	   pUI->PrintMsg("Adding a new Ground: Click anywhere to add");
@@ -29,15 +29,9 @@ void ActionAddGround::Execute()
 	   pUI->PrintMsg("Enter the name of Ground");
 	   string m_label = pUI->GetSrting();
 	   pUI->ClearStatusBar();
-	   pUI->PrintMsg("Enter a value: ");
-	   string v_label = pUI->GetSrting();
-	   int value = stoi(v_label);
-	   pUI->ClearStatusBar();
 
-<<<<<<< Updated upstream
-=======
+
 	   
->>>>>>> Stashed changes
 
 	   //Calculate the rectangle Corners
 	   int compWidth = pUI->getCompWidth();
@@ -50,9 +44,8 @@ void ActionAddGround::Execute()
 
 	   
 	   pManager->AddComponent(pG);
-	   int counter= pG->getGcount();
-	   (pG->setGcount(counter++));
-   }
+	   pG->Groundcount++;
+       }
    else
    {
 

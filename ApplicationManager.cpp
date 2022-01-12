@@ -1,14 +1,4 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBattery.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddGround.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBuzzer.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddFuse.h"
-
-
-
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -19,8 +9,6 @@ ApplicationManager::ApplicationManager()
 	//Creates the UI Object & Initialize the UI
 	pUI = new UI;
 }
-<<<<<<< Updated upstream
-=======
 
 
 Component* ApplicationManager::Findcomp(int x, int y)
@@ -95,14 +83,35 @@ void ApplicationManager::savef(fstream *file)
 ////////////////////////////////////////////////////////////////////
 
 
->>>>>>> Stashed changes
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;		
 }
 ////////////////////////////////////////////////////////////////////
-
+// //By Riham
+ void ApplicationManager::AddConnection(Connection* pCon, Component* Comp1, Component* Comp2)
+{
+	/*if(! Comp1->AddtoConnectionsTerm1(pCon))
+		pUI->PrintMsg("The first component execeeds its max of connections");
+	 if (!Comp2->AddtoConnectionsTerm2(pCon))
+		 pUI->PrintMsg("The second component execeeds its max of connections");*/
+	 //pUI->DrawConnection(*pCon->getC_pGfxInfo());
+	 Connlist[ConnCount++] = pCon;
+}
+////////////////////////////////////////////////////////////////////
+int ApplicationManager::getCompCount()
+{
+	return CompCount;
+}
+////////////////////////////////////////////////////////////////////
+// //By Riham
+////////////////////////////////////////////////////////////////////
+Component** ApplicationManager::getCompList()
+{
+	return CompList;
+}
+////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is reuired from the user
@@ -121,33 +130,45 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_Bulb:
 			pAct = new ActionAddBulb(this);
 			break;
-
 		case ADD_Switch:
 			pAct = new ActionAddSwitch(this);
 			break;
-
 		case ADD_Battery:
 			pAct = new ActionAddBattery(this);
 			break;
-
 		case ADD_Ground:
 			pAct = new ActionAddGround(this);
 			break;
-
 		case ADD_Buzzer:
 			pAct = new ActionAddBuzzer(this);
 			break;
 		case ADD_Fuse:
 			pAct = new ActionAddFuse(this);
 			break;
-
-
 		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
+			pAct = new ActionAddConnection(this);
+			break;
+		case ADD_Module:
+			pAct = new ActionAddModule(this);
 			break;
 
-
-
+		case SELECT:
+			pAct = new ActionSelect(this);
+			break;
+		case EDIT_Label:
+			pAct = new ActionEdit(this);
+			break;
+		case SAVE: 
+			pAct = new ActionSave(this);
+			break;
+		case SIM_MODE:
+			pAct = new Simulation(this);
+			break;
+		case LOAD: 
+			pAct = new ActionLoad(this);
+			break;
+			//TODO: Create AddConection Action here
+			break;
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -159,12 +180,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
-////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////
+		
 void ApplicationManager::UpdateInterface()
 {
 		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
+		for (int i = 0; i < ConnCount; i++)
+			Connlist[i]->Draw(pUI);
 
 }
 

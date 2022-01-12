@@ -1,8 +1,7 @@
 #pragma once
-
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Actions\Action.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Bulb.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ApplicationManager.h"
+#include "Actions\Action.h"
+#include "Bulb.h"
+#include "ApplicationManager.h"
 
 class ActionAddBulb : public Action
 {

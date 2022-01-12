@@ -1,8 +1,7 @@
 #pragma once
-
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Actions\Action.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\Fuse.h"
-#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ApplicationManager.h"
+#include "Actions\Action.h"
+#include "Fuse.h"
+#include "ApplicationManager.h"
 
 class ActionAddFuse : public Action
 {

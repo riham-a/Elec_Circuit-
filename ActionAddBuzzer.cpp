@@ -1,4 +1,5 @@
 #include "ActionAddBuzzer.h"
+#include "Buzzer.h"
 
 ActionAddBuzzer::ActionAddBuzzer(ApplicationManager* pApp) :Action(pApp)
 {
@@ -21,6 +22,14 @@ void ActionAddBuzzer::Execute()
 	pUI->GetPointClicked(Cx, Cy);
 
 	//Clear Status Bar
+	pUI->ClearStatusBar();
+
+	pUI->PrintMsg("Enter the name of Buzzer");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter a value: ");
+	string v_label = pUI->GetSrting();
+	int value = stoi(v_label);
 	pUI->ClearStatusBar();
 
 
