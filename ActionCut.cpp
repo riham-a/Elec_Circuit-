@@ -13,6 +13,7 @@ void ActionCut::Execute()
 	Component* Compn = pManager->Findcomp(x, y);
 	if (Compn != nullptr)
 	{
+		Compn->deleteComp_Conns();
 		x = Compn->getM_pGfxInfo()->PointsList[0].x;
 		y = Compn->getM_pGfxInfo()->PointsList[0].y;
 		x2 = x + pUI->getCompWidth();

@@ -1,7 +1,7 @@
 #include "Ground.h"
 #include <fstream>
 
-int Ground::Groundcount=0;
+
 Ground::Ground(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 
@@ -19,25 +19,6 @@ void Ground::Operate()
 string Ground::CompData()
 {
 	return "Ground";
-
-}
-
-void Ground::Operate()
-{
-
-}
-string Ground::CompData()
-{
-	return "Ground";
-}
-int Ground::getGcount()
-{
-	return Groundcount;
-}
-
-void Ground::setGcount(int s)
-{
-	Groundcount = s;
 
 }
 

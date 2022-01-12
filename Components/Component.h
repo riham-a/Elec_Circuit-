@@ -26,6 +26,7 @@ protected:
 	static int SID;
 	int ID;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
+
 public:
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
@@ -51,7 +52,6 @@ public:
 	GraphicsInfo* getM_pGfxInfo();  //riham
 	bool AddtoConnectionsTerm1(Connection* pC);
 	bool AddtoConnectionsTerm2(Connection* pC);
-	void deleteComp_Conns ();
 	////////////////////////////////////////////////////////
 	void setCompName(string s);
 	void setCompValue(double n); 
@@ -64,9 +64,8 @@ public:
 	virtual Component* Copycomponent(GraphicsInfo* ginfo) = 0;
 	//Destructor must be virtual
 	virtual ~Component();
+	void deleteComp_Conns();
 	bool returnTerr1(Point* P);
 	bool returnTerr2(Point* P);
-	int gettermn1();
-	int gettermn2();
 };
 #endif

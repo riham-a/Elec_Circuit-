@@ -18,11 +18,7 @@ void Switch::Draw(UI* pUI)
 	//Call output class and pass resistor drawing info to it.
 	pUI->DrawSwitch(*m_pGfxInfo, on_off, Selected); //update to draw resistor
 
-}
 
-string Switch::CompData()
-{
-	return "Switch";
 }
 
 string Switch::CompData()

@@ -31,10 +31,7 @@ Component* Bulb::Copycomponent(GraphicsInfo* ginfo)
 	//R->setCompName(m_Label); R->setCompValue(c_Value);
 	return  R;
 }
-string Bulb::CompData()
-{
-	return "Bulb";
-}
+
 void Bulb::Save(ofstream *file)
 {
 	*file << "BLB" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) <<endl;

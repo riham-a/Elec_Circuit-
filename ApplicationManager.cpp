@@ -10,6 +10,10 @@ ApplicationManager::ApplicationManager()
 	pUI = new UI;
 }
 
+int ApplicationManager::getCompCount()
+{
+	return CompCount;
+}
 Component* ApplicationManager::Findcomp(int x, int y)
 {
 	int c = 0;
@@ -99,7 +103,10 @@ GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
-
+	Component** ApplicationManager::getCompList()
+{
+	return CompList;
+}
 
 
 ////////////////////////////////////////////////////////////////////
@@ -119,17 +126,17 @@ void ApplicationManager::AddComponent(Component* pComp)
 	 Connlist[ConnCount++] = pCon;
 }
 ////////////////////////////////////////////////////////////////////
-int ApplicationManager::getCompCount()
-{
-	return CompCount;
-}
+//int ApplicationManager::getCompCount()
+//{
+//	return CompCount;
+//}
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
-Component** ApplicationManager::getCompList()
-{
-	return CompList;
-}
+//Component** ApplicationManager::getCompList()
+//{
+//	return CompList;
+//}
 ////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
@@ -167,10 +174,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionAddConnection(this);
 			break;
-
-		case ADD_Module:
-			pAct = new ActionAddModule(this);
-			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
@@ -180,14 +183,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE: 
 			pAct = new ActionSave(this);
 			break;
-		case SIM_MODE:
-			pAct = new Simulation(this);
-			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
-		case Delete:
-			pAct = new ActionDelete(this);
 		case COPY:
 			pAct = new ActionCopy(this);
 			break;
@@ -208,76 +206,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
+
 ////////////////////////////////////////////////////////////////////
-		
+
 void ApplicationManager::UpdateInterface()
 {
-	Bulb_to_Switch();
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (CompList[i])
+		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
-	}
-	for (int i = 0; i < ConnCount; i++)
-	{
-		if (Connlist[i])
+		for (int i = 0; i < ConnCount; i++)
 			Connlist[i]->Draw(pUI);
-	}
+
 }
-Component* ApplicationManager::GetSelected(int& index)
-{
-	Component* SelectedCom = NULL;
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (CompList[i]->IFSelected())
-		{
-			SelectedCom = CompList[i];
-			index = i;
-		}
-	}
-	return SelectedCom;
-}
-void ApplicationManager::deleteComp(int index)
-{
-	//Component* newComplist[MaxCompCount];
-	for (int i = index; i < CompCount; i++)
-	{
-		if(i != CompCount-1)
-		CompList[i] = CompList[i + 1];
-	}
-	CompCount--;
-	pUI->ClearDrawingArea();
-	UpdateInterface();
-}
+
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()
 {
 	return pUI;
 }
-///////////////////////////////Riham////////////////////////////////////////
-void ApplicationManager::Bulb_to_Switch()
-{
-	GraphicsInfo* gf = new GraphicsInfo(2);
-	Component* C;
-	Switch* sw = NULL;
-	Bulb* b = NULL;
-	for (int i = 0; i < CompCount; i++)
-	{
-		C = CompList[i];
-		
-		if (C->CompData() == "Bulb")
-			b = dynamic_cast <Bulb*> (C);
-		if (C->CompData() == "Switch")
-			sw = dynamic_cast <Switch*> (C);
-	}
-	if (sw && b)
-	{
-		if (sw->getON_OFF())
-			b->setON_OFF(true);
-		else
-			b->setON_OFF(false);
-	}
-}
+
 ////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()

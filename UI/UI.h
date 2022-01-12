@@ -12,6 +12,12 @@ struct Point
 	int x,y;
 };
 
+
+//A structure to contain drawing parameters for each component/connection
+//Each component stores its drawing points in this struct 
+//For example, a resistor can store points of the rectangluar area it occupies
+//The Connection can store the points of its line segments
+//this structure can be extended if desired
 struct GraphicsInfo
 {
 	int PointsCount;
@@ -44,12 +50,11 @@ class UI
 		ITM_SAVE,
 		ITM_LOAD,
 		ITM_Connection,
-		ITM_Module,
-		ITM_Delete,
 		ITM_COPY,
 		ITM_PASTE,
 		ITM_CUT,
 		ITM_EXIT,		//Exit item
+		//TODO: Add more items names here
 	
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
 	
@@ -60,15 +65,7 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
-
-		ITM_Switch_sim,
-		ITM_voltmeter,		//Exit item
-		ITM_ammeter,
-		ITM_EXIT_sim,		//Exit item
-
-
 		//TODO:Add more items names here
-
 	
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
 	
@@ -128,8 +125,7 @@ public:
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;==
-	void DrawModule(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	window* getPWind();
 
 

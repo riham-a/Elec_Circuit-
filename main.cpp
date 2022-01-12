@@ -6,6 +6,7 @@
 
 int main()
 {
+
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
@@ -24,7 +25,6 @@ int main()
 
 	}while(ActType != EXIT);
 		
-	
 	return 0;
 }
 

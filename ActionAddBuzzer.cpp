@@ -23,13 +23,7 @@ void ActionAddBuzzer::Execute()
 
 	//Clear Status Bar
 	pUI->ClearStatusBar();
-	pUI->PrintMsg("Enter the name of Buzzer");
-	string m_label = pUI->GetSrting();
-	pUI->ClearStatusBar();
-	pUI->PrintMsg("Enter a value: ");
-	string v_label = pUI->GetSrting();
-	int value = stoi(v_label);
-	pUI->ClearStatusBar();
+
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
 	//Calculate the rectangle Corners

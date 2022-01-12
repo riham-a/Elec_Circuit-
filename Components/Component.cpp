@@ -119,28 +119,17 @@ bool Component::returnTerr2(Point* P)
 		return false;
 }
 
-
-int Component::gettermn1()
-{
-	return term1_conn_count;
-}
-
-int Component::gettermn2()
-{
-	return term2_conn_count;
-}
-
 void  Component::deleteComp_Conns()
 {
 	for (int i = 0; i < term1_conn_count; i++)
 	{
-		if(term1_connections[i])
-		delete term1_connections[i];
+		if (term1_connections[i])
+			delete term1_connections[i];
 	}
 	for (int i = 0; i < term2_conn_count; i++)
 	{
-		if(term2_connections[i])
-		delete term2_connections[i];
+		if (term2_connections[i])
+			delete term2_connections[i];
 	}
 
 }
