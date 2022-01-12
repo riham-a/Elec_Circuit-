@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Actions\Action.h"
 #include "Bulb.h"
 #include "ApplicationManager.h"

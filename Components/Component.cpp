@@ -17,13 +17,17 @@ Component::Component()
 
 }
 
+bool Component::IFSelected()
+{
+	return Selected;
+}
+void Component::setSelected(bool s)
+{
+	Selected = s;
+}
 GraphicsInfo* Component::getM_pGfxInfo()
 {
 	return m_pGfxInfo;
-}
-void Component::setSelected(bool select)
-{
-	selected = select;
 }
 
 void Component::setCompName(string s)
@@ -51,11 +55,11 @@ string Component::Getcomptype()
 	return comptype;
 }
 
-void Component::Save(fstream *file)
-{
-	// comptype, num, m_label, c_value, graphics info
-	*file << "comptype" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " <<to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
-}
+//void Component::Save(fstream *file)
+//{
+//	// comptype, num, m_label, c_value, graphics info
+//	*file << "comptype" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " <<to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+//}
 
 int Component::GetID()
 {
@@ -65,9 +69,55 @@ int Component::GetID()
 void Component::Load()
 {
 }
-
-
-
+//Component* Component::Copycomponent()
+//{
+//	return nullptr;
+//}
+///////////////////////////////////////////////////Riham
+bool Component::AddtoConnectionsTerm1(Connection* pC)
+{
+	if (term1_conn_count == MAX_CONNS)
+		return false;
+	else
+		term1_conn_count++;
+		term1_connections[term1_conn_count] = pC;
+		return true;
+}
+////////////////////////////////////////////
+bool Component::AddtoConnectionsTerm2(Connection* pC)
+{
+	if (term2_conn_count == MAX_CONNS)
+		return false;
+	else
+	{
+		term2_connections[term1_conn_count++] = pC;
+		return true;
+	}
+}
+bool Component::returnTerr1(Point* P)
+{
+	if (this)
+	{
+		if ((P->x >= m_pGfxInfo->PointsList[0].x) && (P->x <= m_pGfxInfo->PointsList[1].x))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+}
+bool Component::returnTerr2(Point* P)
+{
+	if (this)
+	{
+		if ((P->x > this->m_pGfxInfo->PointsList[0].x) && (P->x < this->m_pGfxInfo->PointsList[1].x))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+}
 Component::~Component()
 {}
 

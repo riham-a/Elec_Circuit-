@@ -1,21 +1,4 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
-#include "ActionAddBattery.h"
-#include "ActionAddSwitch.h"
-#include "ActionAddBattery.h"
-#include "ActionAddGround.h"
-#include "ActionAddBuzzer.h"
-#include "ActionAddFuse.h"
-#include "ActionAddBulb.h"
-#include "Actions/ActionSelect.h"
-#include "../Elec Circuit Code Framework/ActionEdit.h"
-#include <math.h>
-#include "Actions/ActionAddConnection.h"
-#include "ActionLoad.h"
-#include "ActionSave.h"
-
-
-
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -33,6 +16,7 @@ int ApplicationManager::getCompCount()
 }
 Component* ApplicationManager::Findcomp(int x, int y)
 {
+	int c = 0;
 	for (int i = 0; i < CompCount; i++)
 	{
 		Component* C = CompList[i];
@@ -44,11 +28,18 @@ Component* ApplicationManager::Findcomp(int x, int y)
 		{
 			return C;
 		}
+		else
+			c++;
 	}
+	if (c == CompCount)
+		return nullptr;
 }
+
+
 
 Connection* ApplicationManager::Findconnection(int x, int y)
 {
+	int C = 0;
 	for (int i = 0; i < ConnCount; i++)
 	{
 		Connection* C = Connlist[i];
@@ -64,24 +55,46 @@ Connection* ApplicationManager::Findconnection(int x, int y)
 		slope = (y2 - y1) / (x2 - x1);
 		b = abs( Y2 - (slope * X2));
 		if ((y / x) == slope && (b = abs(x - (slope * x))))
+		//if(((X1 == x)||(X2 == x))&& ((Y1 == y)||(Y2 == y) ))
 		{
 			return C;
 		}
 	}
+	if (C == ConnCount)
+	{
+		return nullptr;
+	}
 }
 
-void ApplicationManager::savef(fstream *file)
+void ApplicationManager::savef(ofstream *file)
 {
+	*file << CompCount << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		CompCount;
 		CompList[i]->Save(file);
 	}
+	*file << ConnCount << endl;
 	for (int i = 0; i < ConnCount; i++)
 	{
 		ConnCount;
 		Connlist[i]->Savecon(file);
 	}
+}
+Component* ApplicationManager::forCopy(Component * pcopied, GraphicsInfo* gInfo)
+{
+	return pcopied->Copycomponent(gInfo);
+}
+
+GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo* pGInfo)
+{
+	int compWidth = pUI->getCompWidth();
+	int compHeight = pUI->getCompHeight();
+	pGInfo->PointsList[0].x = cx - compWidth / 2;
+	pGInfo->PointsList[0].y = cy - compHeight / 2;
+	pGInfo->PointsList[1].x = cx + compWidth / 2;
+	pGInfo->PointsList[1].y = cy + compHeight / 2;
+	return pGInfo;
 }
 
 
@@ -95,13 +108,36 @@ void ApplicationManager::savef(fstream *file)
 	return CompList;
 }
 
+
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;		
 }
 ////////////////////////////////////////////////////////////////////
-
+// //By Riham
+ void ApplicationManager::AddConnection(Connection* pCon, Component* Comp1, Component* Comp2)
+{
+	/*if(! Comp1->AddtoConnectionsTerm1(pCon))
+		pUI->PrintMsg("The first component execeeds its max of connections");
+	 if (!Comp2->AddtoConnectionsTerm2(pCon))
+		 pUI->PrintMsg("The second component execeeds its max of connections");*/
+	 //pUI->DrawConnection(*pCon->getC_pGfxInfo());
+	 Connlist[ConnCount++] = pCon;
+}
+////////////////////////////////////////////////////////////////////
+//int ApplicationManager::getCompCount()
+//{
+//	return CompCount;
+//}
+////////////////////////////////////////////////////////////////////
+// //By Riham
+////////////////////////////////////////////////////////////////////
+//Component** ApplicationManager::getCompList()
+//{
+//	return CompList;
+//}
+////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is reuired from the user
@@ -135,14 +171,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_Fuse:
 			pAct = new ActionAddFuse(this);
 			break;
+		case ADD_CONNECTION:
+			pAct = new ActionAddConnection(this);
+			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
 		case EDIT_Label:
 			pAct = new ActionEdit(this);
-			break;
-		case ADD_CONNECTION:
-			pAct = new ActionAddConnection(this);
 			break;
 		case SAVE: 
 			pAct = new ActionSave(this);
@@ -150,11 +186,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
-			//TODO: Create AddConection Action here
+		case COPY:
+			pAct = new ActionCopy(this);
 			break;
-
-
-
+		case PASTE:
+			pAct = new ActionPaste(this);
+			break;
+		case CUT:
+			pAct = new ActionCut(this);
+			break;
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -166,12 +206,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
+
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::UpdateInterface()
 {
 		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
+		for (int i = 0; i < ConnCount; i++)
+			Connlist[i]->Draw(pUI);
 
 }
 

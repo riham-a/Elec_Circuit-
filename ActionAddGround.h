@@ -2,7 +2,6 @@
 #include "Actions\Action.h"
 #include "Ground.h"
 #include "ApplicationManager.h"
-
 class ActionAddGround : public Action
 {
 private:

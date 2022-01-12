@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Actions\Action.h"
 #include "Switch.h"
 #include "ApplicationManager.h"

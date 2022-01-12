@@ -9,7 +9,7 @@ void ActionSave::Execute()
 	UI* pUI = pManager->GetUI();
 	pUI->PrintMsg("Enter file name");
 	string filename = pUI->GetSrting();
-	fstream file; 
+	ofstream file; 
 	file.open(filename);
 	pManager->savef(&file);
 	file.close();

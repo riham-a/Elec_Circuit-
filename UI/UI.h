@@ -40,7 +40,7 @@ class UI
 		//If you want to change the menu items order, just change the order here
 		ITM_RES,		//Resistor item in menu
 		ITM_Bulb,
-		ITM_Switch,
+	    ITM_Switch,
 		ITM_Battery,
 		ITM_Ground,
 		ITM_Buzzer,
@@ -49,6 +49,10 @@ class UI
 		ITM_TO_SIM,
 		ITM_SAVE,
 		ITM_LOAD,
+		ITM_Connection,
+		ITM_COPY,
+		ITM_PASTE,
+		ITM_CUT,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -71,7 +75,7 @@ class UI
 
 	MODE AppMode;		//Application Mode (design or simulation)
 	
-	static const int	width = 1200, height = 650,	//Window width and height
+	static const int	width = 1500, height = 650,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
@@ -116,13 +120,13 @@ public:
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
-	void DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+	void DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off,  bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected = false) const;
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-
+	window* getPWind();
 
 
 

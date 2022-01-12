@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\rawia\Desktop\Elec Circuit Code Framework\Components\Component.h"
+#include "Components\Component.h"
 
 class Ground :public Component
 {
@@ -8,6 +8,8 @@ public:
 	Ground(GraphicsInfo* b_GfxInfo);
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
-	virtual void Save(fstream file);
+	virtual string CompData();
+	Component* Copycomponent(GraphicsInfo* ginfo);
+	virtual void Save(ofstream* file);
 
 };

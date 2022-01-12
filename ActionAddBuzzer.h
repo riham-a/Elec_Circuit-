@@ -1,8 +1,6 @@
 #pragma once
-
-
 #include "Actions\Action.h"
-#include "Actions\Action.h"
+#include "Buzzer.h"
 #include "ApplicationManager.h"
 
 class ActionAddBuzzer : public Action
