@@ -12,12 +12,6 @@ struct Point
 	int x,y;
 };
 
-
-//A structure to contain drawing parameters for each component/connection
-//Each component stores its drawing points in this struct 
-//For example, a resistor can store points of the rectangluar area it occupies
-//The Connection can store the points of its line segments
-//this structure can be extended if desired
 struct GraphicsInfo
 {
 	int PointsCount;
@@ -50,11 +44,9 @@ class UI
 		ITM_SAVE,
 		ITM_LOAD,
 		ITM_Connection,
-
 		ITM_Module,
-
+		ITM_Delete,
 		ITM_EXIT,		//Exit item
-		//TODO: Add more items names here
 	
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
 	

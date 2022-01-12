@@ -126,7 +126,20 @@ int Component::gettermn2()
 	return term2_conn_count;
 }
 
+void  Component::deleteComp_Conns()
+{
+	for (int i = 0; i < term1_conn_count; i++)
+	{
+		if(term1_connections[i])
+		delete term1_connections[i];
+	}
+	for (int i = 0; i < term2_conn_count; i++)
+	{
+		if(term2_connections[i])
+		delete term2_connections[i];
+	}
 
+}
 Component::~Component()
 {}
 

@@ -115,7 +115,7 @@ ActionType UI::GetUserAction() const
 			case ITM_LOAD: return LOAD;
 			case ITM_Connection: return ADD_CONNECTION;
 			case ITM_EXIT:	return EXIT;	
-			
+			case ITM_Delete: return Delete;
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -227,6 +227,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Load.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
 	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
+	MenuItemImages[ITM_Delete] = "images\\Menu\\Delete.jpeg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -409,8 +410,6 @@ void UI::DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected) const
 	pWind->DrawImage(BuzzerImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-
-
 void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 {
 	string FuseImage;
@@ -422,8 +421,6 @@ void UI::DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected) const
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(FuseImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-//TODO: Add similar functions to draw all other components
-
 
 
 
