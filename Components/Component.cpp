@@ -17,7 +17,6 @@ Component::Component()
 
 }
 
-
 bool Component::IFSelected()
 {
 	return Selected;
@@ -56,11 +55,11 @@ string Component::Getcomptype()
 	return comptype;
 }
 
-void Component::Save(fstream *file)
-{
-	// comptype, num, m_label, c_value, graphics info
-	*file << "comptype" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " <<to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
-}
+//void Component::Save(fstream *file)
+//{
+//	// comptype, num, m_label, c_value, graphics info
+//	*file << "comptype" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " <<to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+//}
 
 int Component::GetID()
 {
@@ -70,6 +69,10 @@ int Component::GetID()
 void Component::Load()
 {
 }
+//Component* Component::Copycomponent()
+//{
+//	return nullptr;
+//}
 ///////////////////////////////////////////////////Riham
 bool Component::AddtoConnectionsTerm1(Connection* pC)
 {
@@ -115,6 +118,7 @@ bool Component::returnTerr2(Point* P)
 	else
 		return false;
 }
+
 
 int Component::gettermn1()
 {

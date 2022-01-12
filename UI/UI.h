@@ -46,6 +46,9 @@ class UI
 		ITM_Connection,
 		ITM_Module,
 		ITM_Delete,
+		ITM_COPY,
+		ITM_PASTE,
+		ITM_CUT,
 		ITM_EXIT,		//Exit item
 	
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
@@ -75,7 +78,7 @@ class UI
 
 	MODE AppMode;		//Application Mode (design or simulation)
 	
-	static const int	width = 1200, height = 650,	//Window width and height
+	static const int	width = 1500, height = 650,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
@@ -125,7 +128,7 @@ public:
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
-	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;==
 	void DrawModule(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	window* getPWind();
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\rawia\Desktop\Elec Circuit Code Framework\Components\Component.h"
+#include "Components\Component.h"
 
 class Buzzer :public Component
 {
@@ -8,7 +8,7 @@ public:
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual string CompData();
-
-	virtual void Save(fstream file);
+	Component* Copycomponent(GraphicsInfo* ginfo);
+	virtual void Save(ofstream* file);
 
 };

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Components\Component.h"
 
 class Ground :public Component
@@ -18,7 +17,9 @@ public:
 	static int getGcount();
 	static void setGcount(int s);
 	virtual string CompData();
-
+	virtual string CompData();
+	Component* Copycomponent(GraphicsInfo* ginfo);
+	virtual void Save(ofstream* file);
 };
 
 

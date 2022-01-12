@@ -2,8 +2,7 @@
 #define _COMPONENT_H
 
 #include "..\Defs.h"
-
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\UI\UI.h"
+#include "..\UI\UI.h"
 //#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
 
 class Connection;
@@ -55,19 +54,19 @@ public:
 	void deleteComp_Conns ();
 	////////////////////////////////////////////////////////
 	void setCompName(string s);
-	virtual void setCompValue(double n); // virtual as when it come to be inherited, each component has a different value in different units like ohm for resistance and voltage for potential 
-	string GetName();
-	double GetValue();
+	void setCompValue(double n); 
+	virtual string GetName();
+	virtual double GetValue();
 	string Getcomptype();
-	virtual void Save(fstream *file);
+	virtual void Save(ofstream* file) =0;
 	int GetID();
 	virtual void Load();
+	virtual Component* Copycomponent(GraphicsInfo* ginfo) = 0;
 	//Destructor must be virtual
 	virtual ~Component();
 	bool returnTerr1(Point* P);
 	bool returnTerr2(Point* P);
 	int gettermn1();
 	int gettermn2();
-
 };
 #endif

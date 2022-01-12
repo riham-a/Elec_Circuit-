@@ -114,6 +114,9 @@ ActionType UI::GetUserAction() const
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
 			case ITM_Connection: return ADD_CONNECTION;
+			case ITM_COPY: return COPY;
+			case ITM_PASTE: return PASTE;
+			case ITM_CUT: return CUT;
 			case ITM_EXIT:	return EXIT;	
 			case ITM_Delete: return Delete;
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
@@ -228,6 +231,9 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
 	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
 	MenuItemImages[ITM_Delete] = "images\\Menu\\Delete.jpeg";
+	MenuItemImages[ITM_COPY] = "images\\Menu\\Copy.JPG";
+	MenuItemImages[ITM_PASTE] = "images\\Menu\\Paste.JPG";
+	MenuItemImages[ITM_CUT] = "images\\Menu\\Cut.JPG";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -287,7 +293,6 @@ void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-
 void UI::DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off, bool selected) const
 {
 	string BulbImage;
@@ -336,8 +341,6 @@ void UI::DrawModule(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(ModImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-v
-
 void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected) const
 {
 	string SwitchImage;
@@ -369,7 +372,6 @@ void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected) co
 	}
 	else
 	{
-
 		PrintMsg(" Please Enter only 0 or 1");
 	}
 }
@@ -431,6 +433,9 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 		pWind->SetPen(RED, 3);
 	else
 		pWind->SetPen(BLUE, 3);
+		pWind->SetPen(RED, 5);
+	else
+		pWind->SetPen(BLUE, 5);
 
 		//Draw Resistor at Gfx_Info (1st corner)
 		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);

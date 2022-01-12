@@ -1,7 +1,6 @@
 #include "Ground.h"
 #include <fstream>
 
-
 int Ground::Groundcount=0;
 Ground::Ground(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
@@ -23,12 +22,14 @@ string Ground::CompData()
 
 }
 
-void Ground::Save(fstream file)
+void Ground::Operate()
 {
-	file << "GRD" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) <<endl;
 
 }
-
+string Ground::CompData()
+{
+	return "Ground";
+}
 int Ground::getGcount()
 {
 	return Groundcount;
@@ -40,4 +41,14 @@ void Ground::setGcount(int s)
 
 }
 
+Component* Ground::Copycomponent(GraphicsInfo* ginfo)
+{
+	Component* R = new Ground(ginfo);
+	return  R;
+}
 
+void Ground::Save(ofstream *file)
+{
+	*file << "GRD" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) <<endl;
+
+}

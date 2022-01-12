@@ -1,8 +1,8 @@
 #pragma once
-#include "Action.h"
-//#include "UI\UI.h"
-#include "../ApplicationManager.h"
-//#include "Defs.H"
+#include "..\Actions\Action.h"
+#include "..\UI\UI.h"
+#include "..\ApplicationManager.h"
+#include "..\Defs.H"
 
 class ActionSelect : public Action
 {

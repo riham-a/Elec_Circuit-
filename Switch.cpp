@@ -18,7 +18,11 @@ void Switch::Draw(UI* pUI)
 	//Call output class and pass resistor drawing info to it.
 	pUI->DrawSwitch(*m_pGfxInfo, on_off, Selected); //update to draw resistor
 
+}
 
+string Switch::CompData()
+{
+	return "Switch";
 }
 
 string Switch::CompData()
@@ -27,9 +31,17 @@ string Switch::CompData()
 
 }
 
-void Switch::Save(fstream file)
+Component* Switch::Copycomponent(GraphicsInfo* ginfo)
 {
-	file << "SWT" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+	//GraphicsInfo* pGInfo = new GraphicsInfo(2);
+	Component* R = new Switch(ginfo);
+	//R->setCompName(m_Label); R->setCompValue(c_Value);
+	return  R;
+}
+
+void Switch::Save(ofstream *file)
+{
+	*file << "SWT" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
 
 }
 

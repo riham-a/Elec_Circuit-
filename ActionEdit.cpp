@@ -1,8 +1,8 @@
 #include "ActionEdit.h"
 #include "ApplicationManager.h"
-#include "UI/UI.h"
-#include "Components/Component.h"
-#include "Components/Connection.h"
+//#include "UI/UI.h"
+//#include "Components/Component.h"
+//#include "Components/Connection.h"
 
 ActionEdit::ActionEdit(ApplicationManager* pApp) : Action (pApp)
 {
@@ -11,8 +11,10 @@ ActionEdit::ActionEdit(ApplicationManager* pApp) : Action (pApp)
 void ActionEdit::Execute()
 {
 	UI* pUI = pManager->GetUI();
+	pUI->PrintMsg("Editing: click on component or connection to edit");
 	pUI->GetPointClicked(x, y);
 	Component* Compn = pManager->Findcomp(x, y);
+	Connection* conn = pManager->Findconnection(x, y);
 
 	if (Compn != nullptr)
 	{
@@ -38,9 +40,8 @@ void ActionEdit::Execute()
 		}
 	}
 
-	else
+	else if ((conn != nullptr))
 	{
-		Connection* conn = pManager->Findconnection(x, y);
 		pUI->PrintMsg("Print 1 to change the name and 2 for change one of connected components ");
 		string choice = pUI->GetSrting();
 		if (choice == "1")

@@ -25,7 +25,6 @@ void ActionAddGround::Execute()
 
 	   //Clear Status Bar
 	   pUI->ClearStatusBar();
-
 	   pUI->PrintMsg("Enter the name of Ground");
 	   string m_label = pUI->GetSrting();
 	   pUI->ClearStatusBar();
@@ -37,6 +36,7 @@ void ActionAddGround::Execute()
 	   //Calculate the rectangle Corners
 	   int compWidth = pUI->getCompWidth();
 	   int compHeight = pUI->getCompHeight();
+	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
 	   pGInfo->PointsList[0].x = Cx - compWidth / 2;
 	   pGInfo->PointsList[0].y = Cy - compHeight / 2;
@@ -49,9 +49,15 @@ void ActionAddGround::Execute()
        }
    else
    {
-
 	   pUI->PrintMsg("You can't add more than one ground");
    }
+	pUI->PrintMsg("Enter the name of Ground");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	Ground* pG = new Ground(pGInfo);
+	pG->setCompName(m_label);
+	pG->setCompValue(-1.0);
+	pManager->AddComponent(pG);
 }
 
 void ActionAddGround::Undo()

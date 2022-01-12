@@ -77,10 +77,6 @@ void Connection::Savecon(fstream *file)
 
 }
 
-
-	pUI->DrawConnection(*pGfxInfo, Selected);
-}
-
 GraphicsInfo* Connection::getC_pGfxInfo()
 {
 	return pGfxInfo;
@@ -101,10 +97,10 @@ void Connection::setComp2(Component *comp2)
 	Cmpnt2 = comp2;
 }
 
-void Connection::Savecon(fstream *file)
+void Connection::Savecon(ofstream *file)
 {
-	Cmpnt1->GetID();
-	*file << to_string(Cmpnt1->GetID()) << " " << to_string(Cmpnt1->GetID()) << endl; // I need the Id 
+//	Cmpnt1->GetID();
+	*file << to_string(Cmpnt1->GetID()) << " " << to_string(Cmpnt2->GetID()) << endl; // I need the Id 
 }
 bool  Connection::ifSelected()
 {
@@ -114,6 +110,31 @@ void  Connection::setSelected(bool sel)
 {
 	Selected = sel;
 }
+//GraphicsInfo* Connection::getC_pGfxInfo()
+//{
+//	return pGfxInfo;
+//}
+
+//void Connection::setConnName(string s)
+//{
+//	con_Label = s;
+//}
+
+//void Connection::setComp1(Component *comp1)
+//{ 
+//	Cmpnt1 = comp1;
+//}
+//
+//void Connection::setComp2(Component *comp2)
+//{
+//	Cmpnt2 = comp2;
+//}
+
+//void Connection::Savecon(fstream *file)
+//{
+//	Cmpnt1->GetID();
+//	*file << to_string(Cmpnt1->GetID()) << " " << to_string(Cmpnt1->GetID()) << endl; // I need the Id 
+//}
 
 
 
