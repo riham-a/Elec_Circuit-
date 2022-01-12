@@ -5,20 +5,7 @@
 #include "UI\UI.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
-//
-//#include "Actions\ActionAddRes.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBulb.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddSwitch.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBattery.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddGround.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddBuzzer.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddFuse.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\ActionAddConnection.h"
-//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSelect.h"
-//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionEdit.h"
-////#include <math.h>
-//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionLoad.h"
-//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ActionSave.h"
+
 #include "Actions\ActionAddRes.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
@@ -30,8 +17,12 @@
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSelect.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionEdit.h"
 #include <math.h>
+#include"F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Simulation.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionLoad.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSave.h"
+
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddModule.h"
+
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -76,7 +67,9 @@ public:
 	Component* Findcomp(int x , int y);
 	Connection* Findconnection(int x, int y);
 	void savef(fstream *file);
+
 	void Bulb_to_Switch(); // feature 36: All bulbs in the circuit should be switched on / off according to switches states.
+
 	//destructor
 	~ApplicationManager();
 };

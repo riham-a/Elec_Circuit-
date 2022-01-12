@@ -50,6 +50,9 @@ class UI
 		ITM_SAVE,
 		ITM_LOAD,
 		ITM_Connection,
+
+		ITM_Module,
+
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -62,7 +65,15 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
+
+		ITM_Switch_sim,
+		ITM_voltmeter,		//Exit item
+		ITM_ammeter,
+		ITM_EXIT_sim,		//Exit item
+
+
 		//TODO:Add more items names here
+
 	
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
 	
@@ -123,6 +134,7 @@ public:
 	void DrawGround(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawFuse(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawModule(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	window* getPWind();
 
 

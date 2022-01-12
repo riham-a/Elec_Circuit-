@@ -2,6 +2,7 @@
 #include <fstream>
 
 
+int Ground::Groundcount=0;
 Ground::Ground(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 
@@ -38,4 +39,5 @@ void Ground::setGcount(int s)
 	Groundcount = s;
 
 }
+
 

@@ -9,6 +9,7 @@ ApplicationManager::ApplicationManager()
 	//Creates the UI Object & Initialize the UI
 	pUI = new UI;
 }
+
 Component* ApplicationManager::Findcomp(int x, int y)
 {
 	int c = 0;
@@ -80,6 +81,7 @@ void ApplicationManager::savef(fstream *file)
 // //By Riham
 ////////////////////////////////////////////////////////////////////
 
+
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
@@ -145,6 +147,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionAddConnection(this);
 			break;
+
+		case ADD_Module:
+			pAct = new ActionAddModule(this);
+			break;
+
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
@@ -154,9 +161,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE: 
 			pAct = new ActionSave(this);
 			break;
+		case SIM_MODE:
+			pAct = new Simulation(this);
+			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
+			//TODO: Create AddConection Action here
+			break;
+
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -170,7 +183,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 }
 
 ////////////////////////////////////////////////////////////////////
-
+		
 void ApplicationManager::UpdateInterface()
 {
 	Bulb_to_Switch();

@@ -77,6 +77,7 @@ void Connection::Savecon(fstream *file)
 
 }
 
+
 	pUI->DrawConnection(*pGfxInfo, Selected);
 }
 
@@ -113,8 +114,6 @@ void  Connection::setSelected(bool sel)
 {
 	Selected = sel;
 }
-
-
 
 
 

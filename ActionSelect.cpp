@@ -141,6 +141,7 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 	 }
 	 //if (pC == NULL)
 	 //{
+
 		 if (Counter == pManager->getCompCount()) //Unselect -> Riham
 		 {
 			 window* pWind = pUI->getPWind();
@@ -161,7 +162,9 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 			 pManager->UpdateInterface();
 
 		 }
-	// }
+
+	 }
+
 	 
 }
  ActionSelect::~ActionSelect(void)

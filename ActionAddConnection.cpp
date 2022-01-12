@@ -86,7 +86,8 @@ void ActionAddConnection::Execute()
 	if ((Comp1 && Comp2) && (Comp1 != Comp2))
 	{
 
-		if ((((Comp1->gettermn1()) + (Comp1->gettermn2())) < 2) || ((((Comp1->gettermn1()) + (Comp1->gettermn2())) < 3) && ((Comp1->Getcomptype()) == "Ground") && (((Comp2->gettermn1()) + (Comp2->gettermn2())) < 2) || ((((Comp2->gettermn1()) + (Comp2->gettermn2())) < 3) && ((Comp2->Getcomptype()) == "Ground"))))
+		if (((Comp1->gettermn1() + Comp1->gettermn2()) < 2) || (((Comp1->gettermn1() + Comp1->gettermn2()) < 3) && (Comp1->Getcomptype() == "Ground") && ((Comp2->gettermn1() + Comp2->gettermn2()) < 2) || (((Comp2->gettermn1() + Comp2->gettermn2()) < 3) && (Comp2->Getcomptype() == "Ground"))))
+
 		{
 			Connection* pC = new Connection(pGInfo, Comp1, Comp2);
 			pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
