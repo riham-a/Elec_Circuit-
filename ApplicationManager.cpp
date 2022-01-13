@@ -10,7 +10,10 @@ ApplicationManager::ApplicationManager()
 	pUI = new UI;
 }
 
-
+int ApplicationManager::getCompCount()
+{
+	return CompCount;
+}
 Component* ApplicationManager::Findcomp(int x, int y)
 {
 	int c = 0;
@@ -29,7 +32,7 @@ Component* ApplicationManager::Findcomp(int x, int y)
 			c++;
 	}
 	if (c == CompCount)
-		return NULL;
+		return nullptr;
 }
 
 Connection* ApplicationManager::Findconnection(int x, int y)
@@ -57,22 +60,44 @@ Connection* ApplicationManager::Findconnection(int x, int y)
 	}
 	if (C == ConnCount)
 	{
-		return NULL;
+		return nullptr;
 	}
 }
 
-void ApplicationManager::savef(fstream *file)
+void ApplicationManager::savef(ofstream *file)
 {
+	*file << CompCount << endl;
+
+	/**file << CompCount << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		CompCount;
 		CompList[i]->Save(file);
 	}
+	*file << ConnCount << endl;
 	for (int i = 0; i < ConnCount; i++)
 	{
 		ConnCount;
 		Connlist[i]->Savecon(file);
-	}
+	}*/
+}
+
+
+
+Component* ApplicationManager::forCopy(Component * pcopied, GraphicsInfo* gInfo)
+{
+	return pcopied->Copycomponent(gInfo);
+}
+
+GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo* pGInfo)
+{
+	int compWidth = pUI->getCompWidth();
+	int compHeight = pUI->getCompHeight();
+	pGInfo->PointsList[0].x = cx - compWidth / 2;
+	pGInfo->PointsList[0].y = cy - compHeight / 2;
+	pGInfo->PointsList[1].x = cx + compWidth / 2;
+	pGInfo->PointsList[1].y = cy + compHeight / 2;
+	return pGInfo;
 }
 
 
@@ -81,8 +106,10 @@ void ApplicationManager::savef(fstream *file)
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
-
-
+	Component** ApplicationManager::getCompList()
+{
+	return CompList;
+}
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
@@ -100,17 +127,17 @@ void ApplicationManager::AddComponent(Component* pComp)
 	 Connlist[ConnCount++] = pCon;
 }
 ////////////////////////////////////////////////////////////////////
-int ApplicationManager::getCompCount()
-{
-	return CompCount;
-}
+//int ApplicationManager::getCompCount()
+//{
+//	return CompCount;
+//}
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
-Component** ApplicationManager::getCompList()
-{
-	return CompList;
-}
+//Component** ApplicationManager::getCompList()
+//{
+//	return CompList;
+//}
 ////////////////////////////////////////////////////////////////////
 ActionType ApplicationManager::GetUserAction()
 {
@@ -148,16 +175,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionAddConnection(this);
 			break;
+
 		case ADD_Module:
 			pAct = new ActionAddModule(this);
 			break;
-
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
-		case EDIT_Label:
+		/*case EDIT_Label:
 			pAct = new ActionEdit(this);
-			break;
+			break;*/
 		case SAVE: 
 			pAct = new ActionSave(this);
 			break;
@@ -167,10 +194,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_ammeter:
 			pAct = new ActionAmmeter(this);
 			break;
+		case ADD_voltmeter:
+			pAct = new VoltmeterAcion(this);
+			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
-			//TODO: Create AddConection Action here
+		case DEL:
+			pAct = new ActionDelete(this);
+		case COPY:
+			pAct = new ActionCopy(this);
+			break;
+		case PASTE:
+			pAct = new ActionPaste(this);
+			break;
+		case CUT:
+			pAct = new ActionCut(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
@@ -183,24 +222,94 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
-
 ////////////////////////////////////////////////////////////////////
 		
+//void ApplicationManager::UpdateInterface()
+//{
+//		for(int i=0; i<CompCount; i++)
+//			CompList[i]->Draw(pUI);
+//		for (int i = 0; i < ConnCount; i++)
+//			Connlist[i]->Draw(pUI);
+//
+//}
+
+////////////////////////////////////////////////////////////////////
+//UI* ApplicationManager::GetUI()
+//{
+//	return pUI;
+//}
+
+////////////////////////////////////////////////////////////////////
+
+
 void ApplicationManager::UpdateInterface()
 {
-		for(int i=0; i<CompCount; i++)
+	Bulb_to_Switch();
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i])
 			CompList[i]->Draw(pUI);
-		for (int i = 0; i < ConnCount; i++)
+	}
+	for (int i = 0; i < ConnCount; i++)
+	{
+		if (Connlist[i])
 			Connlist[i]->Draw(pUI);
-
+	}
 }
-
+Component* ApplicationManager::GetSelected(int& index)
+{
+	Component* SelectedCom = NULL;
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IFSelected())
+		{
+			SelectedCom = CompList[i];
+			index = i;
+		}
+	}
+	return SelectedCom;
+}
+void ApplicationManager::deleteComp(int index)
+{
+	//Component* newComplist[MaxCompCount];
+	for (int i = index; i < CompCount; i++)
+	{
+		if (i != CompCount - 1)
+			CompList[i] = CompList[i + 1];
+	}
+	CompCount--;
+	pUI->ClearDrawingArea();
+	UpdateInterface();
+}
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()
 {
 	return pUI;
 }
+///////////////////////////////Riham////////////////////////////////////////
+void ApplicationManager::Bulb_to_Switch()
+{
+	GraphicsInfo* gf = new GraphicsInfo(2);
+	Component* C;
+	Switch* sw = NULL;
+	Bulb* b = NULL;
+	for (int i = 0; i < CompCount; i++)
+	{
+		C = CompList[i];
 
+		if (C->CompData() == "Bulb")
+			b = dynamic_cast <Bulb*> (C);
+		if (C->CompData() == "Switch")
+			sw = dynamic_cast <Switch*> (C);
+	}
+	if (sw && b)
+	{
+		if (sw->getON_OFF())
+			b->setON_OFF(true);
+		else
+			b->setON_OFF(false);
+	}
+}
 ////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()

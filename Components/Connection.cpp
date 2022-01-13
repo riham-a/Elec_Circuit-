@@ -1,17 +1,15 @@
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Component.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Connection.h"
-#include <fstream>
+#include "Connection.h"
 
 Connection::Connection(GraphicsInfo *r_GfxInfo, Component *cmp1, Component *cmp2)
 {
 	pGfxInfo = r_GfxInfo;
 	Cmpnt1 = cmp1;
 	Cmpnt2 = cmp2;
-	Selected = false;
+	selected = false;
 }
 void Connection::Draw(UI* pUI)
 {
-	pUI->DrawConnection(*pGfxInfo, Selected);
+	pUI->DrawConnection(*pGfxInfo, selected);
 }
 
 GraphicsInfo* Connection::getC_pGfxInfo()
@@ -36,18 +34,16 @@ void Connection::setComp2(Component *comp2)
 
 void Connection::Savecon(fstream *file)
 {
-	Cmpnt1->GetID();
+//	Cmpnt1->GetID();
 	*file << to_string(Cmpnt1->GetID()) << " " << to_string(Cmpnt1->GetID()) << endl; // I need the Id 
 }
 bool  Connection::ifSelected()
 {
-	return Selected;
+	return selected;
 }
 void  Connection::setSelected(bool sel)
 {
-	Selected = sel;
+	selected = sel;
 }
-
-
 
 

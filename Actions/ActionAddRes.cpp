@@ -1,5 +1,4 @@
 #include "ActionAddRes.h"
-#include "..\ApplicationManager.h"
 
 ActionAddRes::ActionAddRes(ApplicationManager *pApp):Action(pApp)
 {
@@ -23,17 +22,7 @@ void ActionAddRes::Execute()
 
 	//Clear Status Bar
 	pUI->ClearStatusBar();	
-	
-
-	pUI->PrintMsg("Enter the name of resistor");
-	string m_label = pUI->GetSrting();
-	pUI->ClearStatusBar();
-	pUI->PrintMsg("Enter the value of resistor");
-	string v_label = pUI->GetSrting();
-	int value = stoi(v_label);
-	pUI->ClearStatusBar();
-
-	
+		
 	GraphicsInfo * pGInfo= new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 	
 	//Calculate the rectangle Corners
@@ -44,7 +33,13 @@ void ActionAddRes::Execute()
 	pGInfo->PointsList[0].y = Cy - compHeight/2;
 	pGInfo->PointsList[1].x = Cx + compWidth/2;
 	pGInfo->PointsList[1].y = Cy + compHeight/2;
-	 
+	pUI->PrintMsg("Enter the name of resistor");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter the value of resistance");
+	string v_label = pUI->GetSrting();
+	double value = stod(v_label);
+	pUI->ClearStatusBar();
 	Resistor* pR = new Resistor(pGInfo);
 	pR->setCompName(m_label);
 	pR->setCompValue(value);

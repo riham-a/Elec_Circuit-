@@ -12,12 +12,6 @@ struct Point
 	int x,y;
 };
 
-
-//A structure to contain drawing parameters for each component/connection
-//Each component stores its drawing points in this struct 
-//For example, a resistor can store points of the rectangluar area it occupies
-//The Connection can store the points of its line segments
-//this structure can be extended if desired
 struct GraphicsInfo
 {
 	int PointsCount;
@@ -51,6 +45,10 @@ class UI
 		ITM_LOAD,
 		ITM_Connection,
 		ITM_Module,
+		ITM_Delete,
+		ITM_COPY,
+		ITM_PASTE,
+		ITM_CUT,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -63,10 +61,12 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
+
 		ITM_Switch_sim,
-		ITM_voltmeter,		//Exit item
+		ITM_voltmeter,		
 		ITM_ammeter,
 		ITM_EXIT_sim,		//Exit item
+
 
 		//TODO:Add more items names here
 
@@ -79,7 +79,7 @@ class UI
 
 	MODE AppMode;		//Application Mode (design or simulation)
 	
-	static const int	width = 1200, height = 650,	//Window width and height
+	static const int	width = 1500, height = 650,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)

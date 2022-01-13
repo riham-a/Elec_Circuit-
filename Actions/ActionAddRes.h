@@ -2,6 +2,8 @@
 
 #include "action.h"
 #include "..\Components\Resistor.h"
+#include "..\ApplicationManager.h"
+
 
 //Class responsible for adding a new resistor action
 class ActionAddRes : public Action

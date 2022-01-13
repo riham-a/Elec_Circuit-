@@ -1,5 +1,7 @@
 #include "ActionAddModule.h"
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ApplicationManager.h"
+//=======
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ApplicationManager.h"
+//>>>>>>> Riham
 
 ActionAddModule::ActionAddModule(ApplicationManager* pApp) :Action(pApp)
 {

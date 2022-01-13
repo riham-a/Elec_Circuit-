@@ -1,8 +1,5 @@
 #include "ActionAmmeter.h"
-#include<iostream>
-#include<string>
-#include<string.h>
-using namespace std;
+
 
 ActionAmmeter::ActionAmmeter(ApplicationManager* pApp) : Action(pApp)
 {
@@ -11,14 +8,15 @@ ActionAmmeter::ActionAmmeter(ApplicationManager* pApp) : Action(pApp)
 void ActionAmmeter::Execute()
 {
 
-	int v = 0;
-	int rtotal = 0;
+	double v = 0;
+	double rtotal = 0;
 
-	if (SIMULATION)
-	{
+
+
 		for (int i = 0; i < pManager->getCompCount(); i++)
 		{
-			if (pManager->getCompList()[i]->Getcomptype() == "Battery")
+			cout << "riham m3toha"<<endl;
+			if (pManager->getCompList()[i]->CompData() == "Battery")
 			{
 				v = v + pManager->getCompList()[i]->GetValue();
 			}
@@ -28,14 +26,24 @@ void ActionAmmeter::Execute()
 			}
 
 		}
+		double c = 0;
+		c = v / rtotal;
+		int index;
+		Cptr = pManager->GetSelected(index);
+		if (Cptr == nullptr)
+		{
+			cout << "Riham equal null" << endl;
+		}
+		else
+		{
+			cout << "Riham equal finaline" << endl;
+			cout << c<<endl;
+			Cptr->setcurrent(c);
+			pManager->GetUI()->PrintMsg(to_string(Cptr->Getcurrent()));
 
-		Cptr->setcurrent(v / rtotal);
-	}
-	else
-	{
-		Cptr->setcurrent(0);
-	}
-	pManager->GetUI()->PrintMsg(to_string(Cptr->Getcurrent()));
+		}
+		
+
 
 }
 

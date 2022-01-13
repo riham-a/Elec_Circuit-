@@ -16,9 +16,8 @@ enum ActionType
 	ADD_Ground,
 	ADD_Buzzer,
 	ADD_Fuse,
-	ADD_CONNECTION,
-	ADD_Module,        //Add Wire Connection
-
+	ADD_CONNECTION,		//Add Wire Connection
+	ADD_Module,   		//Add Wire Connection
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
 
@@ -27,6 +26,9 @@ enum ActionType
 	SELECT,		//Select a Component, a Connection
 	DEL,		//Delete a Component, a Connection
 	MOVE,		//Move a Component, a Connection
+	COPY,
+	PASTE,
+	CUT,
 
 	SAVE,		//Save the whole Circuit to a file
 	LOAD,		//Load a Circuit from a file
@@ -36,10 +38,10 @@ enum ActionType
 
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
-
 	EXIT,		//Exit the application
 
 	STATUS_BAR,		//A click on the status bar
+
 	DSN_TOOL,	//A click on an empty place in the design tool bar
 	SIM_TOOL
 

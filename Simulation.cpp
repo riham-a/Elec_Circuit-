@@ -1,8 +1,7 @@
 #include "Simulation.h"
-#include "ApplicationManager.h"
-#include "Components/Component.h"
-#include<iostream>
-using namespace std;
+
+
+
 
 Simulation::Simulation(ApplicationManager* pApp) : Action(pApp)
 {
@@ -10,6 +9,10 @@ Simulation::Simulation(ApplicationManager* pApp) : Action(pApp)
 
 void Simulation::Execute()
 {
+	//UI* pUI = pManager->GetUI();
+	//pUI->CreateSimulationToolBar();
+	//int comp_connected = 0;
+	////ApplicationManager* aptr;
 	int comp_connected=0;
 
 	for (int i = 0; i < pManager->getCompCount(); i++)
@@ -41,7 +44,8 @@ void Simulation::Execute()
 	}
 	else
 	{
-		cout << "circuit is not closed";
+		
+		pManager->GetUI()->PrintMsg("circuit is not closed");
 	}
 }
 

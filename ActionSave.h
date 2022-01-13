@@ -1,5 +1,5 @@
 #pragma once
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ApplicationManager.h"
+#include "ApplicationManager.h"
 #include "Actions/action.h"
 #include <fstream>
 

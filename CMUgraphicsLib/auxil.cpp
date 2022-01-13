@@ -3,8 +3,6 @@ See "version.h" for version info and copyright information
 This file was last modified on 05.16.1999
 */
 
-#include <cstdlib>
-#include <windows.h>
 
 #include "auxil.h"
 
@@ -14,7 +12,8 @@ void Pause(const unsigned long ulTime) {
 }
 
 // Return the number of milliseconds since Windows was started
-unsigned long CurrentTime() {
+unsigned long CurrentTime()
+{
 	return timeGetTime();
 }
 

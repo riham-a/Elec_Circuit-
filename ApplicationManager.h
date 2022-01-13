@@ -6,6 +6,21 @@
 #include "Actions\Action.h"
 #include "Components\Component.h"
 #include "Actions\ActionAddRes.h"
+//#include "ActionAddBulb.h"
+//#include "ActionAddSwitch.h"
+//#include "ActionAddBattery.h"
+//#include "ActionAddGround.h"
+//#include "ActionAddBuzzer.h"
+//#include "ActionAddFuse.h"
+//#include "Actions\ActionAddConnection.h"
+//#include "Actions\ActionSelect.h"
+//#include "ActionEdit.h"
+////#include <math.h>
+//#include "ActionLoad.h"
+//#include "ActionSave.h"
+//#include "ActionCopy.h"
+//#include "ActionPaste.h"
+//#include "ActionCut.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBulb.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddSwitch.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddBattery.h"
@@ -21,13 +36,36 @@
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSave.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddModule.h"
 #include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ActionAmmeter.h"
+#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\VoltmeterAcion.h"
 //Main class that manages everything in the application.
+#include <math.h>
+#include "Components\Connection.h"
+#include "ActionAddBattery.h"
+#include "ActionAddSwitch.h"
+#include "ActionAddBattery.h"
+#include "ActionAddGround.h"
+#include "ActionAddBuzzer.h"
+#include "ActionAddFuse.h"
+#include "ActionAddConnection.h"
+#include "ActionSelect.h"
+#include "ActionEdit.h"
+#include <math.h>
+#include "ActionLoad.h"
+#include "ActionSave.h"
+#include "ActionDelete.h"
+#include "ActionCopy.h"
+#include "ActionPaste.h"
+#include "ActionCut.h"
+#include "Simulation.h"
+#include "ActionAddModule.h"
+#include "ActionAddBulb.h"
 class ApplicationManager
 {
 
 	enum { MaxCompCount = 200 };	//Max no of Components	
 
 private:
+	Component* pCopied = nullptr;
 	int CompCount;		//Actual number of Components
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
 
@@ -60,10 +98,20 @@ public:
 	void AddConnection(Connection* pCon, Component* Comp1, Component* Comp2);
 	// get compnent list
 	Component** getCompList();
+	//int getCompCount();
 	Component* Findcomp(int x , int y);
 	Connection* Findconnection(int x, int y);
-	void savef(fstream *file);
-
+	void savef(ofstream *file);
+	//void D_casting(const Component*compn);
+	//Component* copyComponent(Component *);
+	//void pasteComp();
+	//Resistor* res;
+	Component* forCopy(Component*, GraphicsInfo*);
+	GraphicsInfo* changeGraphicInfo(int, int, GraphicsInfo*);
+	//Component * forPaste();
+	void Bulb_to_Switch(); // feature 36: All bulbs in the circuit should be switched on / off according to switches states.
+	void deleteComp(int index);
+	Component* GetSelected(int& index);
 	//destructor
 	~ApplicationManager();
 };

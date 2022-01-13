@@ -1,6 +1,6 @@
 ﻿#include "ActionAddConnection.h"
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ApplicationManager.h"
 
-#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ApplicationManager.h"
 
 ActionAddConnection::ActionAddConnection(ApplicationManager* pApp) :Action(pApp)
 {
@@ -84,7 +84,9 @@ void ActionAddConnection::Execute()
 	pGInfo->PointsList[1].y = y2;
 	if ((Comp1 && Comp2) && (Comp1 != Comp2))
 	{
+
 		if (((Comp1->gettermn1() + Comp1->gettermn2()) < 2) || (((Comp1->gettermn1() + Comp1->gettermn2()) < 3) && (Comp1->Getcomptype() == "Ground") && ((Comp2->gettermn1() + Comp2->gettermn2()) < 2) || (((Comp2->gettermn1() + Comp2->gettermn2()) < 3) && (Comp2->Getcomptype() == "Ground"))))
+
 		{
 			Connection* pC = new Connection(pGInfo, Comp1, Comp2);
 			pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
@@ -95,8 +97,11 @@ void ActionAddConnection::Execute()
 		}
 		else
 		{
+			pUI->ClearStatusBar();
 			pUI->PrintMsg("Parallel circuit is not allowed");
+
 		}
+
 	}
 }
 

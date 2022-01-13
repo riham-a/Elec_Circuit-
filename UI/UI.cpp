@@ -106,14 +106,19 @@ ActionType UI::GetUserAction() const
 			case ITM_Ground: return ADD_Ground;
 			case ITM_Buzzer: return ADD_Buzzer;
 			case ITM_Fuse: return ADD_Fuse;
+
 			case ITM_Module: return ADD_Module;
+
 			case ITM_EDIT: return EDIT_Label;
 			case ITM_TO_SIM: return SIM_MODE;
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
 			case ITM_Connection: return ADD_CONNECTION;
+			case ITM_COPY: return COPY;
+			case ITM_PASTE: return PASTE;
+			case ITM_CUT: return CUT;
 			case ITM_EXIT:	return EXIT;	
-			
+			case ITM_Delete: return DEL;
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -216,13 +221,19 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Ground] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_Buzzer] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.jpg";
+
 	MenuItemImages[ITM_Module] = "images\\Menu\\Menu_Module.jpg";
+
 	MenuItemImages[ITM_EDIT] = "images\\Menu\\Ediit.jpg";
 	MenuItemImages[ITM_TO_SIM] = "images\\Menu\\simulation.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\Menu\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Load.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
 	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
+	MenuItemImages[ITM_Delete] = "images\\Menu\\Delete.jpeg";
+	MenuItemImages[ITM_COPY] = "images\\Menu\\Copy.JPG";
+	MenuItemImages[ITM_PASTE] = "images\\Menu\\Paste.JPG";
+	MenuItemImages[ITM_CUT] = "images\\Menu\\Cut.JPG";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -282,18 +293,6 @@ void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-void UI::DrawModule(const GraphicsInfo& r_GfxInfo, bool selected) const
-{
-	string ModImage;
-	if (selected)
-		ModImage = "Images\\Comp\\Module_HI.jpg";	//use image of highlighted 
-	else
-		ModImage = "Images\\Comp\\Module.jpg";	//use image of the normal 
-
-	
-	pWind->DrawImage(ModImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
 void UI::DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off, bool selected) const
 {
 	string BulbImage;
@@ -327,6 +326,19 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off, bool selected) const
 	{
 		PrintMsg( "Please, Enter only 1, or 0" );
 	}
+}
+
+
+void UI::DrawModule(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string ModImage;
+	if (selected)
+		ModImage = "Images\\Comp\\Module_HI.jpg";	//use image of highlighted 
+	else
+		ModImage = "Images\\Comp\\Module.jpg";	//use image of the normal 
+
+	
+	pWind->DrawImage(ModImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
 void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected) const
@@ -422,11 +434,9 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	//string FuseImage;
 	if (selected)
-		pWind->SetPen(RED, 3);
+		pWind->SetPen(RED, 5);
 	else
-		pWind->SetPen(BLUE, 3);
-
-		//Draw Resistor at Gfx_Info (1st corner)
+		pWind->SetPen(BLUE, 5);
 		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
 }
 window* UI::getPWind()
