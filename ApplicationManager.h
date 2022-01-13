@@ -20,6 +20,7 @@
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionLoad.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionSave.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionAddModule.h"
+#include "f:\zc-university\y3\fall\c++\project\elec circuit code framework1\ActionAmmeter.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {

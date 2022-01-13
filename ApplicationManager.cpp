@@ -164,6 +164,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new Simulation(this);
 			break;
+		case ADD_ammeter:
+			pAct = new ActionAmmeter(this);
+			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;

@@ -31,6 +31,10 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 			 pWind->DrawString(X1, Y1-20, C->GetName());
 			 std::string s = std::to_string(C->GetValue());
 			 pWind->DrawString(X1, Y1 - 40, s);
+		/*	 std::string I= std::to_string(C->Getcurrent());
+			 pWind->DrawString(X1, Y1 - 40, I);
+			 std::string v = std::to_string(C->Getvolt());
+			 pWind->DrawString(X1, Y1 - 40, v);*/
 		 }
 		 else
 		 {

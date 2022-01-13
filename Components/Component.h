@@ -3,8 +3,11 @@
 
 #include "..\Defs.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\UI\UI.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
+#include "..\CMUgraphicsLib\CMUgraphics.h"
+#include <fstream>
 
+//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
+class ApplicationManager;
 class Connection;
 //Base class for all components (resistor, capacitor,....etc) .
 class Component
@@ -14,6 +17,8 @@ protected:
 	string m_Label;
 	double c_Value;
 	string comptype;
+	double volt;
+	double current;
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool selected;
@@ -56,16 +61,21 @@ public:
 	void setCompName(string s);
 	virtual void setCompValue(double n); // virtual as when it come to be inherited, each component has a different value in different units like ohm for resistance and voltage for potential 
 	string GetName();
+	void setcurrent(double c);
+	void setvolt(double v);
 	double GetValue();
+	double Getcurrent();
+	double Getvolt();
 	string Getcomptype();
 	virtual void Save(fstream *file);
 	int GetID();
 	virtual void Load();
 	//Destructor must be virtual
-	virtual ~Component();
+	
 	bool returnTerr1(Point* P);
 	bool returnTerr2(Point* P);
 	int gettermn1();
 	int gettermn2();
+	virtual ~Component();
 };
 #endif

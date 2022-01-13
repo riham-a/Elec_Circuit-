@@ -1,5 +1,5 @@
 #include "Component.h"
-#include <fstream>
+
 
 Component::Component(GraphicsInfo *r_GfxInfo)
 {
@@ -14,6 +14,8 @@ Component::Component()
 	m_pGfxInfo = nullptr;
 	term1_volt = term2_volt = 0;
 	term1_conn_count = term2_conn_count = 0;
+	current = 0;
+	volt = 0;
 
 }
 
@@ -40,6 +42,17 @@ void Component::setCompValue(double n)
 	c_Value = n;
 }
 
+void Component::setvolt(double v)
+{
+	volt = v;
+
+}
+
+void Component::setcurrent(double c)
+{
+	current = c;
+}
+
 string Component::GetName()
 {
 	return m_Label;
@@ -48,6 +61,16 @@ string Component::GetName()
 double Component::GetValue()
 {
 	return c_Value;
+}
+
+double Component::Getcurrent()
+{
+	return current;
+}
+
+double Component::Getvolt()
+{
+	return volt;
 }
 
 string Component::Getcomptype()
