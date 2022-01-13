@@ -22,6 +22,27 @@
 #include "ActionPaste.h"
 #include "ActionCut.h"
 //Main class that manages everything in the application.
+#include <math.h>
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Connection.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddBattery.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddSwitch.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddBattery.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddGround.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddBuzzer.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddFuse.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddConnection.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionSelect.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionEdit.h"
+#include <math.h>
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionLoad.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionSave.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionDelete.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionCopy.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionPaste.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionCut.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Simulation.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddModule.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionAddBulb.h"
 class ApplicationManager
 {
 
@@ -61,6 +82,7 @@ public:
 	void AddConnection(Connection* pCon, Component* Comp1, Component* Comp2);
 	// get compnent list
 	Component** getCompList();
+	//int getCompCount();
 	Component* Findcomp(int x , int y);
 	Connection* Findconnection(int x, int y);
 	void savef(ofstream *file);
@@ -71,9 +93,9 @@ public:
 	Component* forCopy(Component*, GraphicsInfo*);
 	GraphicsInfo* changeGraphicInfo(int, int, GraphicsInfo*);
 	//Component * forPaste();
-
-	
-
+	void Bulb_to_Switch(); // feature 36: All bulbs in the circuit should be switched on / off according to switches states.
+	void deleteComp(int index);
+	Component* GetSelected(int& index);
 	//destructor
 	~ApplicationManager();
 };

@@ -13,5 +13,15 @@ public:
 	virtual string CompData();
 	Component* Copycomponent(GraphicsInfo* ginfo);
 	virtual void Save(ofstream* file);
-
+	int getON_OFF()
+	{
+		return on_off;
+	}
+	void setON_OFF(int o_F)
+	{
+		on_off = o_F;
+	}
+	//virtual void Save(fstream file);
+	Component* Copycomponent(GraphicsInfo* ginfo);
+	virtual void Save(ofstream* file);
 };

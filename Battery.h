@@ -9,6 +9,7 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 
 	virtual string CompData();
+
 	Component* Copycomponent(GraphicsInfo* ginfo);
 	virtual void Save(ofstream* file);
 

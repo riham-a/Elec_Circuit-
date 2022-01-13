@@ -35,8 +35,6 @@ Component* ApplicationManager::Findcomp(int x, int y)
 		return nullptr;
 }
 
-
-
 Connection* ApplicationManager::Findconnection(int x, int y)
 {
 	int C = 0;
@@ -69,6 +67,10 @@ Connection* ApplicationManager::Findconnection(int x, int y)
 void ApplicationManager::savef(ofstream *file)
 {
 	*file << CompCount << endl;
+
+void ApplicationManager::savef(ofstream *file)
+{
+	/**file << CompCount << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		CompCount;
@@ -79,7 +81,22 @@ void ApplicationManager::savef(ofstream *file)
 	{
 		ConnCount;
 		Connlist[i]->Savecon(file);
-	}
+	}*/
+}
+Component* ApplicationManager::forCopy(Component * pcopied, GraphicsInfo* gInfo)
+{
+	return pcopied->Copycomponent(gInfo);
+}
+
+GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo* pGInfo)
+{
+	int compWidth = pUI->getCompWidth();
+	int compHeight = pUI->getCompHeight();
+	pGInfo->PointsList[0].x = cx - compWidth / 2;
+	pGInfo->PointsList[0].y = cy - compHeight / 2;
+	pGInfo->PointsList[1].x = cx + compWidth / 2;
+	pGInfo->PointsList[1].y = cy + compHeight / 2;
+	return pGInfo;
 }
 Component* ApplicationManager::forCopy(Component * pcopied, GraphicsInfo* gInfo)
 {
@@ -107,8 +124,6 @@ GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo
 {
 	return CompList;
 }
-
-
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
@@ -174,18 +189,27 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionAddConnection(this);
 			break;
+
+		case ADD_Module:
+			pAct = new ActionAddModule(this);
+			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
-		case EDIT_Label:
+		/*case EDIT_Label:
 			pAct = new ActionEdit(this);
-			break;
+			break;*/
 		case SAVE: 
 			pAct = new ActionSave(this);
+			break;
+		case SIM_MODE:
+			pAct = new Simulation(this);
 			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
+		case DEL:
+			pAct = new ActionDelete(this);
 		case COPY:
 			pAct = new ActionCopy(this);
 			break;
@@ -206,9 +230,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
-
 ////////////////////////////////////////////////////////////////////
-
+		
 void ApplicationManager::UpdateInterface()
 {
 		for(int i=0; i<CompCount; i++)

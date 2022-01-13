@@ -1,12 +1,13 @@
 #ifndef _COMPONENT_H
 #define _COMPONENT_H
-
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ApplicationManager.h"
 #include "..\Defs.h"
 #include "..\UI\UI.h"
-//#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Connection.h"
+#include "D:\ZC\Year3\Fall 2021\C++\Copy f my work\Elec Circuit Code Framework\Components\Connection.h"
 
 class Connection;
 //Base class for all components (resistor, capacitor,....etc) .
+//class ApplicationManager;
 class Component
 {
 private:
@@ -26,9 +27,14 @@ protected:
 	static int SID;
 	int ID;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
-
+	double volt = 0;
+	double current = 0;
 public:
 	Component(GraphicsInfo *r_GfxInfo);
+	double Getcurrent();
+	double Getvolt();
+	/*void setcurrent(ApplicationManager* aptr);
+	void setvolt(ApplicationManager* aptr);*/
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
 	//void setTerm2Volt(double v);		//sets the voltage at terminal2
 	//double getTerm1Volt();				//returns the voltage at terminal1
@@ -67,5 +73,9 @@ public:
 	void deleteComp_Conns();
 	bool returnTerr1(Point* P);
 	bool returnTerr2(Point* P);
+	int gettermn1();
+	int gettermn2();
+	double getTerm1_volt();
+	double getTerm2_volt();
 };
 #endif

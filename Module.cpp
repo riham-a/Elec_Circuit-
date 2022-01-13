@@ -22,4 +22,18 @@ string Module::CompData()
 void Module::Save(fstream file)
 {
 	file << "MOD" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+
 }
+void Module::Load()
+{
+
+ }
+ void Module::Save(ofstream* file)
+{
+
+}
+Component* Module::Copycomponent(GraphicsInfo* ginfo)
+{
+	Component* c = nullptr;
+	return c;
+ }

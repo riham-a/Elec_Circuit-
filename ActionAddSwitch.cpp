@@ -23,7 +23,13 @@ void ActionAddSwitch::Execute()
 
 	//Clear Status Bar
 	pUI->ClearStatusBar();
-
+	pUI->PrintMsg("Enter the name of Switch");
+	string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Enter a 1 for on or 0 for off: ");
+	string On_Off = pUI->GetSrting();
+	int value = stoi(On_Off);
+	pUI->ClearStatusBar();
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
 	//Calculate the rectangle Corners
@@ -34,15 +40,15 @@ void ActionAddSwitch::Execute()
 	pGInfo->PointsList[0].y = Cy - compHeight / 2;
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
-
+	Switch* pS = new Switch(pGInfo, value);
 	pUI->PrintMsg("Enter the name of Switch");
-	string m_label = pUI->GetSrting();
+	//string m_label = pUI->GetSrting();
 	pUI->ClearStatusBar();
 	pUI->PrintMsg("Enter a 1 for on or 0 for off: ");
-	string On_Off = pUI->GetSrting();
-	double value = stod(On_Off);
+	//string On_Off = pUI->GetSrting();
+	//double value = stod(On_Off);
 	pUI->ClearStatusBar();
-	Switch* pS = new Switch(pGInfo, value);
+	//Switch* pS = new Switch(pGInfo, value);
 	pS->setCompName(m_label); pS->setCompValue(value);
 	pManager->AddComponent(pS);
 }

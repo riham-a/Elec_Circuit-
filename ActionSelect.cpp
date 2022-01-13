@@ -12,7 +12,7 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 	 int Counter = 0;
 	 int X1, Y1, X2, Y2, MouseX, MouseY;
 	 pUI->GetPointClicked(MouseX, MouseY);
-	 Connection* pC = pManager->Findconnection(MouseX, MouseY);
+	 Connection* pC /*= pManager->Findconnection(MouseX, MouseY)*/;
 	 window* pWind;
 	 GraphicsInfo* sw_GF = new GraphicsInfo(2);
 	 for (int i = 0; i < pManager->getCompCount(); i++)   //Select -> Riham
@@ -162,10 +162,7 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 			 pManager->UpdateInterface();
 
 		 }
-
 	 }
-
-	 
 }
  ActionSelect::~ActionSelect(void)
  {

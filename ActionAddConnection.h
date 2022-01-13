@@ -3,10 +3,14 @@
 //#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Actions\Action.h"
 //#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Components\Connection.h"
 //#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Components\Component.h"
-
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Actions\Action.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Connection.h"
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Component.h"
+//=======
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Actions\Action.h"
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Connection.h"
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Component.h"
+//>>>>>>> Riham
 
 
 //Class responsible for adding a new connection action

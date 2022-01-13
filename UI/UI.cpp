@@ -106,6 +106,9 @@ ActionType UI::GetUserAction() const
 			case ITM_Ground: return ADD_Ground;
 			case ITM_Buzzer: return ADD_Buzzer;
 			case ITM_Fuse: return ADD_Fuse;
+
+			case ITM_Module: return ADD_Module;
+
 			case ITM_EDIT: return EDIT_Label;
 			case ITM_TO_SIM: return SIM_MODE;
 			case ITM_SAVE: return SAVE;
@@ -115,7 +118,7 @@ ActionType UI::GetUserAction() const
 			case ITM_PASTE: return PASTE;
 			case ITM_CUT: return CUT;
 			case ITM_EXIT:	return EXIT;	
-			
+			case ITM_Delete: return DEL;
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -131,7 +134,19 @@ ActionType UI::GetUserAction() const
 	}
 	else	//Application is in Simulation mode
 	{
-		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		int ClickedItemOrder = (x / ToolItemWidth);
+		//Divide x coord of the point clicked by the menu item width (int division)
+		//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+		switch (ClickedItemOrder)
+		{
+		case ITM_Switch_sim:	return ADD_Switch_sim;
+		case ITM_voltmeter:  return ADD_voltmeter;
+		case ITM_ammeter:  return ADD_ammeter;
+		case ITM_EXIT_sim:	return EXIT;
+		default: return SIM_TOOL;
+			return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		}
 	}
 
 }
@@ -147,6 +162,8 @@ void UI::ChangeTitle(string Title) const
 {
 	pWind->ChangeTitle(Title);
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////
 void UI::CreateStatusBar() const
 {
@@ -204,12 +221,16 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Ground] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_Buzzer] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.jpg";
+
+	MenuItemImages[ITM_Module] = "images\\Menu\\Menu_Module.jpg";
+
 	MenuItemImages[ITM_EDIT] = "images\\Menu\\Ediit.jpg";
 	MenuItemImages[ITM_TO_SIM] = "images\\Menu\\simulation.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\Menu\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\Menu\\Load.jpg";
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.JPG";
 	MenuItemImages[ITM_Connection] = "images\\Menu\\Connection.JPG";
+	MenuItemImages[ITM_Delete] = "images\\Menu\\Delete.jpeg";
 	MenuItemImages[ITM_COPY] = "images\\Menu\\Copy.JPG";
 	MenuItemImages[ITM_PASTE] = "images\\Menu\\Paste.JPG";
 	MenuItemImages[ITM_CUT] = "images\\Menu\\Cut.JPG";
@@ -231,7 +252,26 @@ void UI::CreateDesignToolBar()
 //Draws the menu (toolbar) in the simulation mode
 void UI::CreateSimulationToolBar()
 {
+	pWind->SetPen(BkGrndColor);
+	pWind->SetBrush(BkGrndColor);
+	//pWind->DrawRectangle(MsgX, height - MsgY, width, height);
+	pWind->DrawRectangle(25, 0, width - ToolItemWidth, height - ToolBarHeight);
+	
 	AppMode = SIMULATION;	//Simulation Mode
+	string MenuItemImages[ITM_SIM_CNT];
+	MenuItemImages[ITM_CIRC_SIM] = "images\\Menu\\simulation.jpg";
+	MenuItemImages[ITM_Switch_sim] = "images\\Menu\\switch_sim.jpg";
+	MenuItemImages[ITM_ammeter] = "images\\Menu\\ammeter.jpg";
+	MenuItemImages[ITM_voltmeter] = "images\\Menu\\voltmeter.jpg";
+	MenuItemImages[ITM_EXIT_sim] = "images\\Menu\\Menu_Exit.jpg";
+	//Draw menu item one image at a time
+	for (int i = 0; i < ITM_SIM_CNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * ToolItemWidth, 0, ToolItemWidth, ToolBarHeight);
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
+
+
 
 	//TODO: Write code to draw the simualtion toolbar (similar to that of design toolbar drawing)
 
@@ -286,6 +326,19 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo,int on_off, bool selected) const
 	{
 		PrintMsg( "Please, Enter only 1, or 0" );
 	}
+}
+
+
+void UI::DrawModule(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string ModImage;
+	if (selected)
+		ModImage = "Images\\Comp\\Module_HI.jpg";	//use image of highlighted 
+	else
+		ModImage = "Images\\Comp\\Module.jpg";	//use image of the normal 
+
+	
+	pWind->DrawImage(ModImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
 void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, int on_off, bool selected) const
@@ -384,8 +437,6 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 		pWind->SetPen(RED, 5);
 	else
 		pWind->SetPen(BLUE, 5);
-
-		//Draw Resistor at Gfx_Info (1st corner)
 		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
 }
 window* UI::getPWind()

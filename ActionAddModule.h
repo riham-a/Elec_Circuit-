@@ -1,6 +1,9 @@
 #pragma once
 #include "Actions\Action.h"
 #include "Module.h"
+
+//#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Module.h"
+
 #include "ApplicationManager.h"
 
 class ActionAddModule : public Action

@@ -22,7 +22,6 @@ void ActionAddBulb::Execute()
 
 	//Clear Status Bar
 	pUI->ClearStatusBar();
-
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
 	//Calculate the rectangle Corners
@@ -46,6 +45,9 @@ void ActionAddBulb::Execute()
 	int ON_OF = stoi(ON_OFF);
 	pUI->ClearStatusBar();
 	Bulb* pB = new Bulb(pGInfo, ON_OF);
+	pUI->PrintMsg("Enter the name of Bulb");
+	//string m_label = pUI->GetSrting();
+	pUI->ClearStatusBar();
 	pB->setCompName(m_label); pB->setCompValue(value);
 	pManager->AddComponent(pB);
 }

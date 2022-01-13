@@ -54,6 +54,11 @@ string Component::Getcomptype()
 {
 	return comptype;
 }
+//void Component::Save(fstream *file)
+//{
+//	// comptype, num, m_label, c_value, graphics info
+//	*file << "comptype" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " <<to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+//}
 
 
 int Component::GetID()
@@ -114,6 +119,15 @@ bool Component::returnTerr2(Point* P)
 		return false;
 }
 
+int Component::gettermn1()
+{
+	return term1_conn_count;
+}
+
+int Component::gettermn2()
+{
+	return term2_conn_count;
+}
 void  Component::deleteComp_Conns()
 {
 	for (int i = 0; i < term1_conn_count; i++)
@@ -127,6 +141,65 @@ void  Component::deleteComp_Conns()
 			delete term2_connections[i];
 	}
 
+}
+double Component::getTerm1_volt()
+{
+	return term1_volt;
+}
+double Component::getTerm2_volt()
+{
+	return term2_volt;
+}
+//void Component::setvolt(ApplicationManager* aptr)
+//{
+//
+//	if (MODE::SIMULATION)
+//	{
+//		//volt = (current * (aptr->GetSelected->GetValue()));
+//		volt = 0;
+//	}
+//	else
+//	{
+//		volt = 0;
+//	}
+//
+//}
+//
+//void Component::setcurrent(ApplicationManager* aptr)
+//{
+//	int v = 0;
+//	int rtotal = 0;
+//
+//	if (MODE::SIMULATION)
+//	{
+//		for (int i = 0; i < aptr->getCompCount(); i++)
+//		{
+//			if (aptr->getCompList()[i]->Getcomptype() == "Battery")
+//			{
+//				v = v + aptr->getCompList()[i]->GetValue();
+//			}
+//			else
+//			{
+//				rtotal = rtotal + aptr->getCompList()[i]->GetValue();
+//			}
+//
+//		}
+//
+//		current = (v / rtotal);
+//	}
+//	else
+//	{
+//		current = 0;
+//	}
+//}
+double Component::Getcurrent()
+{
+	return current;
+}
+
+double Component::Getvolt()
+{
+	return volt;
 }
 Component::~Component()
 {}
