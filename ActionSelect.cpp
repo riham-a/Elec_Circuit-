@@ -124,6 +124,24 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 					 pUI->PrintMsg("Please, Enter only S oe CH");
 				 }
 			 }
+
+//			 C->setSelected(true);
+//			 C->Draw(pUI);
+//			 pUI->PrintMsg(C->CompData());
+//			 window* pWind = pUI->getPWind();
+//			 pWind->SetPen(RED);
+//			 pWind->DrawString(X1, Y1-20, C->GetName());
+//			 std::string s = std::to_string(C->GetValue());
+//			 pWind->DrawString(X1, Y1 - 40, s);
+//		/*	 std::string I= std::to_string(C->Getcurrent());
+//			 pWind->DrawString(X1, Y1 - 40, I);
+//			 std::string v = std::to_string(C->Getvolt());
+//			 pWind->DrawString(X1, Y1 - 40, v);*/
+//		 }
+//		 else
+//		 {
+//			 Counter++;
+
 		 }
 			 else
 			 {
