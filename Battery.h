@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Components\Component.h"
+#include <fstream>
+
+
+
 class Battery :public Component
 {
 public:

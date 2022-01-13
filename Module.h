@@ -1,5 +1,8 @@
 #pragma once
 #include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\Components\Component.h"
+
+#include <fstream>
+
 //#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Module.h"
 //#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Component.h"
 

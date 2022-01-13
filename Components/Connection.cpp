@@ -1,17 +1,16 @@
 #include "Connection.h"
-#include "Component.h"
-#include <fstream>
+
 
 Connection::Connection(GraphicsInfo *r_GfxInfo, Component *cmp1, Component *cmp2)
 {
 	pGfxInfo = r_GfxInfo;
 	Cmpnt1 = cmp1;
 	Cmpnt2 = cmp2;
-	Selected = false;
+	selected = false;
 }
 void Connection::Draw(UI* pUI)
 {
-	pUI->DrawConnection(*pGfxInfo, Selected);
+	pUI->DrawConnection(*pGfxInfo, selected);
 }
 
 GraphicsInfo* Connection::getC_pGfxInfo()
@@ -41,11 +40,11 @@ void Connection::Savecon(ofstream *file)
 }
 bool  Connection::ifSelected()
 {
-	return Selected;
+	return selected;
 }
 void  Connection::setSelected(bool sel)
 {
-	Selected = sel;
+	selected = sel;
 }
 
 

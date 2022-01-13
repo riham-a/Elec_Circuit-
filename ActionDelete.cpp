@@ -1,9 +1,10 @@
-#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ActionDelete.h"
-//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
-#include "ActionAddConnection.h"
-#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ApplicationManager.h"
 
-ActionDelete::ActionDelete(ApplicationManager* pApp) :Action(pApp)
+#include "F:\ZC-University\Y3\Fall\C++\Project\Elec Circuit Code Framework1\ActionDelete.h"
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
+
+
+ActionDelete::ActionDelete(ApplicationManager* pApp):Action(pApp)
+
 {
 
 }

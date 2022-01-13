@@ -1,6 +1,9 @@
 #pragma once
 
-#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Component.h"
+#include <fstream>
+
+#include "Components\Component.h"
+
 
 class Fuse :public Component
 {

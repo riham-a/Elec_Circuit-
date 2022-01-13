@@ -20,8 +20,8 @@ protected:
 	string m_Label;
 	double c_Value;
 	string comptype;
-	double volt;
-	double current;
+	//double volt;
+	//double current;
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool selected;
@@ -30,7 +30,7 @@ protected:
 	Connection *term2_connections[MAX_CONNS];
 	int term1_conn_count;	//actual no. of connections to each terminal
 	int term2_conn_count;
-	bool Selected;          //Riham  
+	//bool Selected;          //Riham  
 	static int SID;
 	int ID;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
@@ -38,8 +38,7 @@ protected:
 	double current = 0;
 public:
 	Component(GraphicsInfo *r_GfxInfo);
-	double Getcurrent();
-	double Getvolt();
+
 	/*void setcurrent(ApplicationManager* aptr);
 	void setvolt(ApplicationManager* aptr);*/
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
@@ -83,7 +82,7 @@ public:
 	virtual void Load();
 	virtual Component* Copycomponent(GraphicsInfo* ginfo) = 0;
 	//Destructor must be virtual
-	/*virtual ~Component();*/*/
+
 	void deleteComp_Conns();
 
 	bool returnTerr1(Point* P);

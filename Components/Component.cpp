@@ -21,11 +21,11 @@ Component::Component()
 
 bool Component::IFSelected()
 {
-	return Selected;
+	return selected;
 }
 void Component::setSelected(bool s)
 {
-	Selected = s;
+	selected = s;
 }
 GraphicsInfo* Component::getM_pGfxInfo()
 {
@@ -215,15 +215,7 @@ double Component::getTerm2_volt()
 //		current = 0;
 //	}
 //}
-double Component::Getcurrent()
-{
-	return current;
-}
 
-double Component::Getvolt()
-{
-	return volt;
-}
 Component::~Component()
 {}
 

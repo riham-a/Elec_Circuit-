@@ -1,5 +1,6 @@
 #pragma once
 #include "Components\Component.h"
+#include <fstream>
 
 class Ground :public Component
 {

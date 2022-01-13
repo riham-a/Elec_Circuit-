@@ -1,8 +1,7 @@
 #include "Bulb.h"
-#include <fstream>
 
 
-Bulb::Bulb(GraphicsInfo *b_GfxInfo):Component(b_GfxInfo)
+Bulb::Bulb(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 Bulb::Bulb(GraphicsInfo* b_GfxInfo, int on_of) : Component(b_GfxInfo)
 {
@@ -12,7 +11,7 @@ Bulb::Bulb(GraphicsInfo* b_GfxInfo, int on_of) : Component(b_GfxInfo)
 void Bulb::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->DrawBulb(*m_pGfxInfo, on_off, Selected); //update to draw resistor
+	pUI->DrawBulb(*m_pGfxInfo, on_off, selected); //update to draw resistor
 }
 
 void Bulb::Operate()
@@ -31,9 +30,9 @@ Component* Bulb::Copycomponent(GraphicsInfo* ginfo)
 	//R->setCompName(m_Label); R->setCompValue(c_Value);
 	return  R;
 }
-
-void Bulb::Save(ofstream *file)
+//
+void Bulb::Save(ofstream* file)
 {
-	*file << "BLB" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) <<endl;
+	*file << "BLB" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
 
 }

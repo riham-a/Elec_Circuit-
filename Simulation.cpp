@@ -1,9 +1,4 @@
 #include "Simulation.h"
-#include "ApplicationManager.h"
-#include "Components/Component.h"
-
-#include<iostream>
-using namespace std;
 
 Simulation::Simulation(ApplicationManager* pApp) : Action(pApp)
 {
@@ -46,8 +41,8 @@ void Simulation::Execute()
 	}
 	else
 	{
-		cout << "circuit is not closed";
 
+		pManager->GetUI()->PrintMsg("circuit is not closed");
 	}
 }
 

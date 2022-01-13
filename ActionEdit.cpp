@@ -1,5 +1,5 @@
 #include "ActionEdit.h"
-#include "ApplicationManager.h"
+
 //#include "UI/UI.h"
 //#include "Components/Component.h"
 //#include "Components/Connection.h"

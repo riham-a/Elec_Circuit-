@@ -1,5 +1,4 @@
 #include "ActionAddBuzzer.h"
-#include "Buzzer.h"
 
 ActionAddBuzzer::ActionAddBuzzer(ApplicationManager* pApp) :Action(pApp)
 {

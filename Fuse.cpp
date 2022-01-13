@@ -1,5 +1,4 @@
 #include "Fuse.h"
-#include <fstream>
 
 Fuse::Fuse(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
@@ -9,7 +8,7 @@ void Fuse::Draw(UI* pUI)
 	//Call output class and pass resistor drawing info to it.
 
 
-	pUI->DrawFuse(*m_pGfxInfo, Selected); //update to draw resistor
+	pUI->DrawFuse(*m_pGfxInfo, selected); //update to draw resistor
 
 }
 

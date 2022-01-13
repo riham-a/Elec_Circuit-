@@ -1,5 +1,4 @@
 #include "ActionAddRes.h"
-#include "..\ApplicationManager.h"
 
 ActionAddRes::ActionAddRes(ApplicationManager *pApp):Action(pApp)
 {

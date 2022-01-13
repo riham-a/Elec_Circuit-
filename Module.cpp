@@ -1,12 +1,11 @@
 #include "Module.h"
-#include <fstream>
 Module::Module(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 
 void Module::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->DrawModule(*m_pGfxInfo, Selected); //update to draw resistor
+	pUI->DrawModule(*m_pGfxInfo, selected); //update to draw resistor
 
 
 }

@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Actions\Action.h"
-#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Ground.h"
+
+#include "Ground.h"
+
 #include "Components\Component.h"
 #include "ApplicationManager.h"
 class ActionAddGround : public Action
