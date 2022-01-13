@@ -28,50 +28,69 @@ Component* ApplicationManager::Findcomp(int x, int y)
 			c++;
 	}
 	if (c == CompCount)
-		return NULL;
+		return nullptr;
 }
 
-Connection* ApplicationManager::Findconnection(int x, int y)
-{
-	int C = 0;
-	for (int i = 0; i < ConnCount; i++)
-	{
-		Connection* C = Connlist[i];
-		int X1 = C->getC_pGfxInfo()->PointsList[0].x;
-		int Y1 = C->getC_pGfxInfo()->PointsList[0].y;
-		int X2 = C->getC_pGfxInfo()->PointsList[1].x;
-		int Y2 = C->getC_pGfxInfo()->PointsList[1].y;
-		double x1 = static_cast <double> (X1); 
-		double y1 = static_cast <double> (Y1);
-		double x2 = static_cast <double> (X2);
-		double y2 = static_cast <double> (Y2);
-		double slope; double b; // b is the part from y axis
-		slope = (y2 - y1) / (x2 - x1);
-		b = abs( Y2 - (slope * X2));
-		if ((y / x) == slope && (b = abs(x - (slope * x))))
-		//if(((X1 == x)||(X2 == x))&& ((Y1 == y)||(Y2 == y) ))
-		{
-			return C;
-		}
-	}
-	if (C == ConnCount)
-	{
-		return NULL;
-	}
-}
 
-void ApplicationManager::savef(fstream *file)
+
+//Connection* ApplicationManager::Findconnection(int x, int y)
+//{
+//	int C = 0;
+//	for (int i = 0; i < ConnCount; i++)
+//	{
+//		Connection* C = Connlist[i];
+//		int X1 = C->getC_pGfxInfo()->PointsList[0].x;
+//		int Y1 = C->getC_pGfxInfo()->PointsList[0].y;
+//		int X2 = C->getC_pGfxInfo()->PointsList[1].x;
+//		int Y2 = C->getC_pGfxInfo()->PointsList[1].y;
+//		double x1 = static_cast <double> (X1); 
+//		double y1 = static_cast <double> (Y1);
+//		double x2 = static_cast <double> (X2);
+//		double y2 = static_cast <double> (Y2);
+//		double slope; double b; // b is the part from y axis
+//		slope = (y2 - y1) / (x2 - x1);
+//		b = abs( Y2 - (slope * X2));
+//		if ((y / x) == slope && (b = abs(x - (slope * x))))
+//		//if(((X1 == x)||(X2 == x))&& ((Y1 == y)||(Y2 == y) ))
+//		{
+//			return C;
+//		}
+//	}
+//	if (C == ConnCount)
+//	{
+//		return nullptr;
+//	}
+//}
+
+void ApplicationManager::savef(ofstream *file)
 {
+	/**file << CompCount << endl;
 	for (int i = 0; i < CompCount; i++)
 	{
 		CompCount;
 		CompList[i]->Save(file);
 	}
+	*file << ConnCount << endl;
 	for (int i = 0; i < ConnCount; i++)
 	{
 		ConnCount;
 		Connlist[i]->Savecon(file);
-	}
+	}*/
+}
+Component* ApplicationManager::forCopy(Component * pcopied, GraphicsInfo* gInfo)
+{
+	return pcopied->Copycomponent(gInfo);
+}
+
+GraphicsInfo * ApplicationManager::changeGraphicInfo(int cx, int cy,GraphicsInfo* pGInfo)
+{
+	int compWidth = pUI->getCompWidth();
+	int compHeight = pUI->getCompHeight();
+	pGInfo->PointsList[0].x = cx - compWidth / 2;
+	pGInfo->PointsList[0].y = cy - compHeight / 2;
+	pGInfo->PointsList[1].x = cx + compWidth / 2;
+	pGInfo->PointsList[1].y = cy + compHeight / 2;
+	return pGInfo;
 }
 
 
@@ -80,6 +99,9 @@ void ApplicationManager::savef(fstream *file)
 ////////////////////////////////////////////////////////////////////
 // //By Riham
 ////////////////////////////////////////////////////////////////////
+
+
+
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
@@ -145,20 +167,35 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionAddConnection(this);
 			break;
+
+		case ADD_Module:
+			pAct = new ActionAddModule(this);
+			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
-		case EDIT_Label:
+		/*case EDIT_Label:
 			pAct = new ActionEdit(this);
-			break;
+			break;*/
 		case SAVE: 
 			pAct = new ActionSave(this);
+			break;
+		case SIM_MODE:
+			pAct = new Simulation(this);
 			break;
 		case LOAD: 
 			pAct = new ActionLoad(this);
 			break;
-		case Delete:
+		case DEL:
 			pAct = new ActionDelete(this);
+		case COPY:
+			pAct = new ActionCopy(this);
+			break;
+		case PASTE:
+			pAct = new ActionPaste(this);
+			break;
+		case CUT:
+			pAct = new ActionCut(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
@@ -171,9 +208,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = nullptr;
 	}
 }
-
 ////////////////////////////////////////////////////////////////////
-
+		
 void ApplicationManager::UpdateInterface()
 {
 	Bulb_to_Switch();

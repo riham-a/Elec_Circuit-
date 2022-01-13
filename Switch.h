@@ -19,6 +19,8 @@ public:
 	{
 		on_off = o_F;
 	}
-	virtual void Save(fstream file);
 
+	//virtual void Save(fstream file);
+	Component* Copycomponent(GraphicsInfo* ginfo);
+	virtual void Save(ofstream* file);
 };

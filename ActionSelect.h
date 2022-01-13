@@ -1,6 +1,11 @@
 #pragma once
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Actions\Action.h"
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\UI\UI.h"
+
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\Actions\Action.h"
+//#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\UI\UI.h"
+
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Actions\Action.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\UI\UI.h"
+
 #include "ApplicationManager.h"
 #include "Defs.H"
 

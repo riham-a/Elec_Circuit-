@@ -43,9 +43,10 @@ void ActionAddConnection::Execute()
 	pGInfo->PointsList[1].y = y2;
 
 	Connection* pC = new Connection(pGInfo, Comp1, Comp2);
-	//pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
+	pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
 	pUI->PrintMsg("Enter the name of this connection");
 	string m_label = pUI->GetSrting();
+	pC->setConnName(m_label);
 	pUI->ClearStatusBar();
 
 }

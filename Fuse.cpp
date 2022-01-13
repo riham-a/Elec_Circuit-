@@ -13,10 +13,18 @@ void Fuse::Draw(UI* pUI)
 
 }
 
-void Fuse::Save(fstream file)
+void Fuse::Save(ofstream *file)
 {
-	file << "FUS" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y)<< endl;
+	*file << "FUS" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y)<< endl;
 
+}
+
+Component* Fuse::Copycomponent(GraphicsInfo* ginfo)
+{
+	//GraphicsInfo* pGInfo = new GraphicsInfo(2);
+	Component* R = new Fuse(ginfo);
+//	R->setCompName(m_Label); R->setCompValue(c_Value);
+	return  R;
 }
 
 void Fuse::Operate()

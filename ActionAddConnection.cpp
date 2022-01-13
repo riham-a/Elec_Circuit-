@@ -1,6 +1,7 @@
 ﻿#include "ActionAddConnection.h"
 
-#include "D:\ZC\Year3\Fall 2021\C++\Elec Circuit Code Framework\Elec Circuit Code Framework\ApplicationManager.h"
+
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\ApplicationManager.h"
 
 ActionAddConnection::ActionAddConnection(ApplicationManager* pApp) :Action(pApp)
 {
@@ -84,12 +85,22 @@ void ActionAddConnection::Execute()
 	pGInfo->PointsList[1].y = y2;
 	if ((Comp1 && Comp2) && (Comp1 != Comp2))
 	{
-		Connection* pC = new Connection(pGInfo, Comp1, Comp2);
-		pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
-		Comp1->AddtoConnectionsTerm1(pC);
-		Comp2->AddtoConnectionsTerm2(pC);
-		pUI->ClearStatusBar();
-		pUI->PrintMsg("Connection done successfully!");
+
+		if (((Comp1->gettermn1() + Comp1->gettermn2()) < 2) || (((Comp1->gettermn1() + Comp1->gettermn2()) < 3) && (Comp1->Getcomptype() == "Ground") && ((Comp2->gettermn1() + Comp2->gettermn2()) < 2) || (((Comp2->gettermn1() + Comp2->gettermn2()) < 3) && (Comp2->Getcomptype() == "Ground"))))
+
+		{
+			Connection* pC = new Connection(pGInfo, Comp1, Comp2);
+			pManager->AddConnection(pC, Comp1, Comp2);   /// Adding new connection
+			Comp1->AddtoConnectionsTerm1(pC);
+			Comp2->AddtoConnectionsTerm2(pC);
+			pUI->ClearStatusBar();
+			pUI->PrintMsg("Connection done successfully!");
+		}
+		else
+		{
+			pUI->PrintMsg("Parallel circuit is not allowed");
+		}
+
 	}
 }
 

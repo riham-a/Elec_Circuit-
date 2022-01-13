@@ -1,6 +1,7 @@
 #pragma once
 #include "../UI/UI.h"
 #include "Component.h"
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Component.h"
 
 class Component;	//forward class declaration
 
@@ -20,8 +21,7 @@ public:
 	void setConnName(string s);
 	void setComp1(Component *comp1);
 	void setComp2(Component *comp2);
-	void Savecon(fstream *file);
+	void Savecon(fstream*file);
 	bool ifSelected();
 	void setSelected(bool sel);
-
 };

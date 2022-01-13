@@ -19,12 +19,19 @@ void Buzzer::Operate()
 string Buzzer::CompData()
 {
 	return "Buzzer";
-	//pUI->DrawBuzzer(*m_pGfxInfo); //update to draw resistor
 
 }
 
-void Buzzer::Save(fstream file)
+Component* Buzzer::Copycomponent(GraphicsInfo* ginfo)
 {
-	file << "BUZ" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
+	//GraphicsInfo* pGInfo = new GraphicsInfo(2);
+	Component* R = new Buzzer(ginfo);
+	//R->setCompName(m_Label); R->setCompValue(c_Value);
+	return  R;
+}
+
+void Buzzer::Save(ofstream *file)
+{
+	*file << "BUZ" << " " << to_string(ID) << " " << m_Label << " " << to_string(c_Value) << " " << to_string(getM_pGfxInfo()->PointsList[0].x) << " " << to_string(getM_pGfxInfo()->PointsList[0].y) << endl;
 
 }

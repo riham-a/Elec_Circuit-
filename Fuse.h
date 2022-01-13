@@ -1,6 +1,5 @@
 #pragma once
-#include "d:\zc\year3\fall 2021\c++\elec circuit code framework\elec circuit code framework\Components\Component.h"
-
+#include "d:\zc\year3\fall 2021\c++\copy f my work\elec circuit code framework\Components\Component.h"
 class Fuse :public Component
 {
 public:
@@ -8,5 +7,6 @@ public:
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual string CompData();
-	virtual void Save(fstream file);
+	virtual void Save(ofstream* file);
+	Component* Copycomponent(GraphicsInfo* ginfo);
 };
